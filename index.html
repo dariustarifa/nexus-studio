@@ -1,204 +1,126 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEXUS STUDIO // Experiencias Web de Nueva Generación</title>
-  <meta name="description" content="Diseño web moderno, interfaces interactivas de alto rendimiento y arquitectura digital de vanguardia.">
-  
-  <!-- Tipografía Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <title>Darius Bougerol — Design Engineer &amp; AI Systems</title>
+  <meta name="description" content="Portfolio of Darius Bougerol: design engineering, frontend architecture, and AI tool integration. Built with craft, restraint, and Emil Kowalski design principles.">
+
+  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Barra de progreso de lectura / scroll -->
-  <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
-
-  <!-- Cursor interactivo personalizado (Desktop) -->
-  <div id="customCursor" class="custom-cursor" aria-hidden="true">
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
-    <span class="cursor-label"></span>
-  </div>
-
-  <!-- Header / Barra de Navegación -->
+  <!-- Header / Navigation -->
   <header class="site-header">
-    <div class="container header-container">
-      <a href="#hero" class="brand-logo" aria-label="Nexus Studio - Inicio">
-        <span class="logo-symbol">
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-            <rect width="32" height="32" rx="8" fill="url(#logo-grad)"/>
-            <path d="M9 23V9L23 23V9" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <defs>
-              <linearGradient id="logo-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-                <stop stop-color="var(--accent-primary)"/>
-                <stop offset="1" stop-color="var(--accent-secondary)"/>
-              </linearGradient>
-            </defs>
-          </svg>
+    <div class="header-inner">
+      <div class="brand">
+        <a href="#overview" class="brand-link">
+          <span class="brand-glyph">⬡</span>
+          <span class="brand-name">darius.dev</span>
+        </a>
+        <span class="status-pill">
+          <span class="status-dot"></span>
+          <span>Granada, ES · Available</span>
         </span>
-        <span class="logo-text">NEXUS<span class="logo-dot">.</span>studio</span>
-      </a>
+      </div>
 
-      <nav class="nav-menu" id="navMenu" aria-label="Navegación principal">
-        <a href="#capacidades" class="nav-link">Capacidades</a>
-        <a href="#playground" class="nav-link">Playground</a>
-        <a href="#proyectos" class="nav-link">Proyectos</a>
-        <a href="#precios" class="nav-link">Precios</a>
-        <a href="#faq" class="nav-link">FAQ</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#work" class="nav-link">Work</a>
+        <a href="#lab" class="nav-link">Interactive Lab</a>
+        <a href="#standards" class="nav-link">Craft Standards</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </nav>
 
       <div class="header-actions">
-        <!-- Botón Command Palette -->
-        <button id="cmdPaletteBtn" class="cmd-palette-btn" title="Abrir paleta de comandos (⌘K / Ctrl+K)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <span class="cmd-text">Buscar...</span>
-          <kbd class="cmd-shortcut">⌘K</kbd>
+        <button id="cmdTrigger" class="cmd-btn" aria-label="Open Command Menu (⌘K)">
+          <span>Search</span>
+          <kbd class="kbd">⌘K</kbd>
         </button>
 
-        <!-- Selector de tema Claro/Oscuro -->
-        <button id="themeToggle" class="icon-btn theme-toggle" aria-label="Alternar tema claro y oscuro" title="Alternar tema">
-          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <button id="themeToggle" class="icon-toggle" aria-label="Toggle theme">
+          <svg class="sun-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
           </svg>
-          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg class="moon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
-        </button>
-
-        <!-- CTA Principal -->
-        <button id="openContactModal" class="btn btn-primary btn-sm">Contactar</button>
-
-        <!-- Botón menú hamburguesa móvil -->
-        <button id="mobileMenuBtn" class="mobile-toggle icon-btn" aria-label="Abrir menú" aria-expanded="false">
-          <span class="bar"></span>
-          <span class="bar"></span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Contenido Principal -->
   <main>
     <!-- HERO SECTION -->
-    <section id="hero" class="hero-section">
-      <div class="ambient-glow glow-top" aria-hidden="true"></div>
-      <div class="ambient-glow glow-right" aria-hidden="true"></div>
-
+    <section id="overview" class="hero-section">
       <div class="container hero-container">
-        <div class="hero-content">
-          <div class="hero-badge fade-in">
-            <span class="badge-dot"></span>
-            <span class="badge-text">Nexus Studio v3.2 — Innovación Web y Diseño Digital</span>
-          </div>
-
-          <h1 class="hero-title fade-in delay-1">
-            Diseñamos el futuro de la web con <span class="gradient-text">precisión milimétrica</span> y estética pura.
+        <div class="hero-intro">
+          <p class="section-kicker">Design Engineering &amp; AI Integration</p>
+          <h1 class="hero-title">
+            Tactile web interfaces powered by <span class="accent-text">autonomous AI systems</span>.
           </h1>
-
-          <p class="hero-description fade-in delay-2">
-            Creamos experiencias digitales galardonadas: interfaces reactivas ultra fluidas, rendimiento certificado de 100/100 en Lighthouse y diseño centrado en la conversión.
+          <p class="hero-bio">
+            I’m Darius Bougerol. I build high-performance web products, generative AI pipelines, and responsive interfaces with strict adherence to design engineering principles: sub-frame response, tactile feedback, and purposeful typography.
           </p>
 
-          <div class="hero-actions fade-in delay-3">
-            <a href="#playground" class="btn btn-primary btn-lg" data-cursor="Probar">
-              <span>Explorar Playground</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
+          <div class="hero-actions">
+            <a href="#work" class="btn btn-primary">
+              <span>View Selected Work</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="#proyectos" class="btn btn-secondary btn-lg" data-cursor="Ver">
-              <span>Ver Proyectos</span>
-            </a>
-          </div>
-
-          <!-- Métricas del Hero -->
-          <div class="hero-stats fade-in delay-4">
-            <div class="stat-item">
-              <span class="stat-number">99.8%</span>
-              <span class="stat-label">Puntaje Lighthouse</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-              <span class="stat-number">&lt; 0.2s</span>
-              <span class="stat-label">Tiempo de respuesta</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-              <span class="stat-number">+160</span>
-              <span class="stat-label">Lanzamientos de éxito</span>
-            </div>
+            <button class="btn btn-secondary" id="triggerHeroToast">
+              <span>Spawn Sonner Toast</span>
+              <kbd class="kbd">T</kbd>
+            </button>
           </div>
         </div>
 
-        <!-- Tarjeta Interactiva 3D con Efecto Tilt -->
-        <div class="hero-preview-wrapper fade-in delay-3">
-          <div class="glass-card hero-preview-card" id="heroCard">
-            <div class="preview-header">
-              <div class="window-dots">
-                <span class="dot dot-red"></span>
-                <span class="dot dot-yellow"></span>
-                <span class="dot dot-green"></span>
-              </div>
-              <div class="window-title">nexus-live-console.tsx</div>
-              <div class="status-indicator">
-                <span class="live-pulse"></span>
-                <span>ONLINE</span>
+        <!-- Interactive Terminal / Spring Sandbox -->
+        <div class="hero-widget">
+          <div class="widget-header">
+            <div class="terminal-dots">
+              <span class="t-dot"></span>
+              <span class="t-dot"></span>
+              <span class="t-dot"></span>
+            </div>
+            <span class="widget-title">spring-physics.config.ts</span>
+            <span class="widget-badge">Interactive</span>
+          </div>
+
+          <div class="widget-body">
+            <!-- Sliding segment control -->
+            <div class="segment-track" id="heroSegmentTrack" role="tablist">
+              <div class="segment-thumb" id="segmentThumb"></div>
+              <button class="segment-tab active" data-index="0" role="tab" aria-selected="true">Tactile</button>
+              <button class="segment-tab" data-index="1" role="tab" aria-selected="false">Snappy</button>
+              <button class="segment-tab" data-index="2" role="tab" aria-selected="false">Instant</button>
+            </div>
+
+            <!-- Interactive physics tester -->
+            <div class="physics-stage">
+              <div class="physics-box" id="physicsTarget">
+                <span class="physics-label">Press &amp; Hold</span>
+                <span class="physics-sub" id="physicsStatus">scale(0.97) on :active</span>
               </div>
             </div>
 
-            <div class="preview-body">
-              <div class="code-preview">
-                <pre><code><span class="code-keyword">const</span> <span class="code-var">experience</span> = <span class="code-keyword">new</span> <span class="code-func">NexusStudio</span>({
-  <span class="code-prop">performance</span>: <span class="code-string">"ultra"</span>,
-  <span class="code-prop">framerate</span>: <span class="code-number">120</span>,
-  <span class="code-prop">fluidity</span>: <span class="code-bool">true</span>,
-  <span class="code-prop">theme</span>: <span class="code-string" id="codeThemeDisplay">"cyber-blue"</span>
-});
-
-<span class="code-comment">// Ejecución en tiempo real</span>
-experience.<span class="code-func">render</span>(<span class="code-string">"#viewport"</span>);</code></pre>
+            <!-- Live parameters read-out -->
+            <div class="parameters-grid">
+              <div class="param-item">
+                <span class="param-key">Stiffness</span>
+                <span class="param-val" id="valStiffness">420</span>
               </div>
-
-              <!-- Controladores en vivo dentro de la tarjeta -->
-              <div class="interactive-controls">
-                <div class="control-row">
-                  <label for="glowSlider">Resplandor Ambiental</label>
-                  <input type="range" id="glowSlider" min="10" max="100" value="70">
-                  <span id="glowVal" class="control-val">70%</span>
-                </div>
-                <div class="control-row">
-                  <label for="speedSlider">Velocidad de Microanimación</label>
-                  <input type="range" id="speedSlider" min="0.2" max="2" step="0.1" value="1">
-                  <span id="speedVal" class="control-val">1.0x</span>
-                </div>
+              <div class="param-item">
+                <span class="param-key">Damping</span>
+                <span class="param-val" id="valDamping">28</span>
               </div>
-
-              <!-- Selector de acento en vivo -->
-              <div class="palette-picker-inline">
-                <span class="picker-label">Paleta activa:</span>
-                <div class="color-options">
-                  <button class="color-pill active" data-color="blue" style="--c: #3b82f6;" title="Cyber Blue"></button>
-                  <button class="color-pill" data-color="violet" style="--c: #8b5cf6;" title="Neon Violet"></button>
-                  <button class="color-pill" data-color="emerald" style="--c: #10b981;" title="Tech Emerald"></button>
-                  <button class="color-pill" data-color="coral" style="--c: #f43f5e;" title="Sunset Coral"></button>
-                  <button class="color-pill" data-color="amber" style="--c: #f59e0b;" title="Solar Amber"></button>
-                </div>
+              <div class="param-item">
+                <span class="param-key">Mass</span>
+                <span class="param-val" id="valMass">0.85</span>
               </div>
             </div>
           </div>
@@ -206,532 +128,251 @@ experience.<span class="code-func">render</span>(<span class="code-string">"#vie
       </div>
     </section>
 
-    <!-- LOGOS DE MARCAS / CONFIANZA -->
-    <section class="clients-banner">
+    <!-- SECTION 1: SELECTED WORK -->
+    <section id="work" class="section">
       <div class="container">
-        <p class="clients-heading">TECNOLOGÍAS Y ESTÁNDARES QUE DOMINAMOS</p>
-        <div class="tech-strip">
-          <div class="tech-item"><span class="tech-bullet">⚡</span> TypeScript 5.8</div>
-          <div class="tech-item"><span class="tech-bullet">⚛</span> React 19 & Next.js</div>
-          <div class="tech-item"><span class="tech-bullet">✨</span> GSAP & WebGL 3D</div>
-          <div class="tech-item"><span class="tech-bullet">🎨</span> CSS Moderno & Glassmorphism</div>
-          <div class="tech-item"><span class="tech-bullet">🚀</span> Vite & Turbopack</div>
-          <div class="tech-item"><span class="tech-bullet">🛡</span> Accesibilidad WCAG AAA</div>
+        <div class="section-header">
+          <p class="section-kicker">01 / Portfolio</p>
+          <h2 class="section-title">Selected Systems &amp; Interfaces</h2>
+          <p class="section-lead">
+            Every project demonstrates functional craft: zero layout shift, real user workflows, and high-performance rendering.
+          </p>
+        </div>
+
+        <div class="work-grid">
+          <!-- Work 1: Photography & Cinema 3D Portfolio -->
+          <article class="work-card">
+            <div class="work-header">
+              <span class="work-index">01</span>
+              <div class="work-tags">
+                <span class="tag">GSAP 3D</span>
+                <span class="tag">Lenis Scroll</span>
+                <span class="tag">React 19</span>
+              </div>
+            </div>
+            <h3 class="work-title">D·B Cinema &amp; Photography Portfolio</h3>
+            <p class="work-desc">
+              High-end audiovisual portfolio for film and photography in Granada. Features a 360° circular 3D carousel with inertia snap, StackViewer gallery with infinite scroll, and responsive WebP srcset pipeline.
+            </p>
+            <div class="work-meta">
+              <a href="http://localhost:5173" target="_blank" rel="noopener noreferrer" class="work-link">
+                <span>Inspect Local Build (Port 5173)</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Work 2: Sonner Notification Engine -->
+          <article class="work-card">
+            <div class="work-header">
+              <span class="work-index">02</span>
+              <div class="work-tags">
+                <span class="tag">Micro-Interactions</span>
+                <span class="tag">Emil Kowalski Spec</span>
+                <span class="tag">Zero Jank</span>
+              </div>
+            </div>
+            <h3 class="work-title">Sonner-Style Stacked Toast System</h3>
+            <p class="work-desc">
+              Physical card-stack notification architecture. Toasts rest in 3D perspective, expand fluidly on hover, and dismiss without displacing page flow or causing GPU layout thrashing.
+            </p>
+            <div class="work-meta">
+              <button class="work-link-btn" id="demoToastAction">
+                <span>Trigger Live Demo</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Work 3: Agentic AI Workflow Engine -->
+          <article class="work-card">
+            <div class="work-header">
+              <span class="work-index">03</span>
+              <div class="work-tags">
+                <span class="tag">LLM Tools</span>
+                <span class="tag">GitHub CLI</span>
+                <span class="tag">Automated CI</span>
+              </div>
+            </div>
+            <h3 class="work-title">Agentic Workflow &amp; Code Deployment</h3>
+            <p class="work-desc">
+              End-to-end tooling connecting natural language prompts to verified terminal tasks, GitHub repository automation, and automated branch staging with strict sandboxing.
+            </p>
+            <div class="work-meta">
+              <a href="https://github.com/dariustarifa/nexus-studio" target="_blank" rel="noopener noreferrer" class="work-link">
+                <span>View GitHub Repository</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Work 4: Synthetic Audio Micro-Interactions -->
+          <article class="work-card">
+            <div class="work-header">
+              <span class="work-index">04</span>
+              <div class="work-tags">
+                <span class="tag">Web Audio API</span>
+                <span class="tag">Zero Dependencies</span>
+                <span class="tag">Haptic Sound</span>
+              </div>
+            </div>
+            <h3 class="work-title">Subtle Audio Feedback Architecture</h3>
+            <p class="work-desc">
+              Zero-asset synthetic haptic audio generator using the native Web Audio API oscillator. Provides immediate, tactile click validation below 10ms latency without downloading MP3 files.
+            </p>
+            <div class="work-meta">
+              <button class="work-link-btn" id="audioToggleDemo">
+                <span id="audioStatusSpan">Audio Feedback: Off</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/></svg>
+              </button>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN CAPACIDADES / BENTO GRID -->
-    <section id="capacidades" class="section capabilities-section">
+    <!-- SECTION 2: INTERACTIVE LAB -->
+    <section id="lab" class="section">
       <div class="container">
-        <div class="section-header text-center">
-          <span class="section-eyebrow">ARQUITECTURA DE ALTO IMPACTO</span>
-          <h2 class="section-title">Ingeniería que trasciende lo convencional</h2>
-          <p class="section-subtitle">Cada componente está optimizado para responder con inmediatez, cautivar visualmente y convertir usuarios en clientes fieles.</p>
+        <div class="section-header">
+          <p class="section-kicker">02 / Interactive Lab</p>
+          <h2 class="section-title">Micro-Interactions Without Slop</h2>
+          <p class="section-lead">
+            Test the physical response of UI components built under Emil Kowalski's rules.
+          </p>
         </div>
 
-        <div class="bento-grid">
-          <!-- Bento 1 (Grande) -->
-          <div class="bento-card bento-span-2 glass-card tilt-card" data-cursor="Explorar">
-            <div class="bento-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-              </svg>
-            </div>
-            <h3 class="bento-title">Velocidad Insuperable a 60/120 FPS</h3>
-            <p class="bento-text">
-              Transformaciones exclusivamente sobre <code>transform</code> y <code>opacity</code> sin provocar reflujos en el navegador (layout thrashing). Scroll inercial suave y tiempos de carga imperceptibles.
+        <div class="lab-grid">
+          <!-- Lab Item 1: Tactile Compression -->
+          <div class="lab-card">
+            <span class="lab-badge">Rule: Scale 0.97 on :active</span>
+            <h4 class="lab-title">Button State Mechanics</h4>
+            <p class="lab-text">
+              Press and release each button. Notice the immediate 60ms compression that confirms user intent before the action executes.
             </p>
-            <div class="bento-visual">
-              <div class="fps-meter">
-                <div class="fps-bar" style="--fps-pct: 98%;">
-                  <span class="fps-label">Frame Budget: 16.6ms</span>
-                  <span class="fps-score">120 FPS Estables</span>
-                </div>
-              </div>
+            <div class="lab-demo">
+              <button class="btn btn-primary" id="labPrimaryBtn">Primary Action</button>
+              <button class="btn btn-secondary" id="labSecondaryBtn">Secondary</button>
+              <button class="btn btn-ghost" id="labGhostBtn">Ghost</button>
             </div>
           </div>
 
-          <!-- Bento 2 -->
-          <div class="bento-card glass-card tilt-card" data-cursor="Diseño">
-            <div class="bento-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
-                <path d="M2 12h20"></path>
-              </svg>
-            </div>
-            <h3 class="bento-title">Diseño Adaptativo Fluido</h3>
-            <p class="bento-text">
-              Sistemas basados en <code>clamp()</code> y unidades relativas modernas. Cada pantalla, desde smartphones ultra compactos hasta monitores 4K de 32", se visualiza con armonía exacta.
+          <!-- Lab Item 2: Zero-Jitter Tabular Counter -->
+          <div class="lab-card">
+            <span class="lab-badge">Rule: font-variant-numeric: tabular-nums</span>
+            <h4 class="lab-title">Zero-Jitter Number Updates</h4>
+            <p class="lab-text">
+              When numbers change, standard proportional fonts shift neighboring characters. Tabular numerals ensure absolute stability.
             </p>
+            <div class="lab-demo">
+              <div class="counter-cluster">
+                <button class="counter-step" id="labCountDec">−</button>
+                <span class="counter-display" id="labCounterVal">1,024</span>
+                <button class="counter-step" id="labCountInc">+</button>
+              </div>
+            </div>
           </div>
 
-          <!-- Bento 3 -->
-          <div class="bento-card glass-card tilt-card" data-cursor="Accesible">
-            <div class="bento-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              </svg>
-            </div>
-            <h3 class="bento-title">Accesibilidad & SEO Total</h3>
-            <p class="bento-text">
-              Semántica HTML5 nativa, navegación completa por teclado, roles ARIA impecables y metaetiquetas Open Graph preparadas para viralizar en redes sociales y conquistar Google.
+          <!-- Lab Item 3: Inline Morphing Copy -->
+          <div class="lab-card">
+            <span class="lab-badge">Rule: State Confirmation</span>
+            <h4 class="lab-title">Instant Clipboard Feedback</h4>
+            <p class="lab-text">
+              Single-click copy affordance with smooth SVG morphing from clipboard icon to checkmark.
             </p>
-          </div>
-
-          <!-- Bento 4 (Grande) -->
-          <div class="bento-card bento-span-2 glass-card tilt-card" data-cursor="Interactivo">
-            <div class="bento-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
-              </svg>
-            </div>
-            <h3 class="bento-title">Sistema de Diseño & Tokens Vivos</h3>
-            <p class="bento-text">
-              Variables CSS dinámicas con escala armónica base 4px/8px, compatibilidad nativa con modo oscuro, modo claro y esquemas personalizados al instante sin recompilar.
-            </p>
-            <div class="token-chips">
-              <span class="chip">--space-4: 16px</span>
-              <span class="chip">--radius-card: 18px</span>
-              <span class="chip">--transition-smooth: 350ms</span>
-              <span class="chip">--glass-blur: 16px</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN INTERACTIVA: PLAYGROUND EN VIVO -->
-    <section id="playground" class="section playground-section">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-eyebrow">LABORATORIO EN TIEMPO REAL</span>
-          <h2 class="section-title">Experimenta con el motor interactivo</h2>
-          <p class="section-subtitle">Interactúa directamente con los controles y comprueba la reactividad instantánea del sistema.</p>
-        </div>
-
-        <div class="playground-box glass-card">
-          <!-- Pestañas del Playground -->
-          <div class="playground-tabs" role="tablist">
-            <button class="pg-tab active" data-tab="tab-tokens" role="tab" aria-selected="true">
-              🎨 Personalizador de Tokens
-            </button>
-            <button class="pg-tab" data-tab="tab-metrics" role="tab" aria-selected="false">
-              📊 Métricas de Rendimiento
-            </button>
-            <button class="pg-tab" data-tab="tab-generator" role="tab" aria-selected="false">
-              ⚡ Generador de Código
-            </button>
-          </div>
-
-          <!-- Contenido Pestaña 1: Tokens -->
-          <div class="pg-content active" id="tab-tokens" role="tabpanel">
-            <div class="tab-grid">
-              <div class="controls-column">
-                <h4>Configura los parámetros visuales</h4>
-                <div class="pg-field">
-                  <label for="radiusSlider">Radio de bordes (Border Radius): <span id="radiusVal">16px</span></label>
-                  <input type="range" id="radiusSlider" min="0" max="32" value="16">
-                </div>
-
-                <div class="pg-field">
-                  <label for="blurSlider">Efecto Desenfocado (Backdrop Blur): <span id="blurVal">16px</span></label>
-                  <input type="range" id="blurSlider" min="0" max="30" value="16">
-                </div>
-
-                <div class="pg-field">
-                  <label>Esquema de Color Primario:</label>
-                  <div class="theme-buttons">
-                    <button class="theme-select-btn active" data-color="blue">Cyber Blue</button>
-                    <button class="theme-select-btn" data-color="violet">Neon Violet</button>
-                    <button class="theme-select-btn" data-color="emerald">Tech Emerald</button>
-                    <button class="theme-select-btn" data-color="coral">Sunset Coral</button>
-                  </div>
-                </div>
-
-                <div class="pg-field">
-                  <label>Efectos de Audio Sintético (Web Audio API):</label>
-                  <button id="toggleAudioBtn" class="btn btn-secondary btn-sm">
-                    <span id="audioIcon">🔈</span>
-                    <span id="audioStatusText">Activar Sonido al Clic</span>
-                  </button>
-                </div>
-              </div>
-
-              <!-- Vista previa interactiva -->
-              <div class="preview-column">
-                <div class="demo-card-preview" id="interactiveDemoCard">
-                  <div class="demo-badge">VISTA PREVIA EN VIVO</div>
-                  <h3>Tarjeta Reactiva</h3>
-                  <p>Mueve los controles de la izquierda para ver cómo se adapta este componente en tiempo real.</p>
-                  <div class="demo-card-footer">
-                    <button class="btn btn-primary btn-sm demo-action-btn" id="demoInteractBtn">¡Haz Clic Aquí!</button>
-                    <span class="click-counter">Clics: <strong id="clickCount">0</strong></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Contenido Pestaña 2: Métricas -->
-          <div class="pg-content" id="tab-metrics" role="tabpanel" hidden>
-            <div class="metrics-grid">
-              <div class="metric-card">
-                <div class="metric-circle" style="--percent: 100;">
-                  <span class="metric-val">100</span>
-                </div>
-                <h4 class="metric-name">Rendimiento (Performance)</h4>
-                <p class="metric-desc">FCP: 0.3s · LCP: 0.6s · CLS: 0.00</p>
-              </div>
-
-              <div class="metric-card">
-                <div class="metric-circle" style="--percent: 100;">
-                  <span class="metric-val">100</span>
-                </div>
-                <h4 class="metric-name">Accesibilidad (a11y)</h4>
-                <p class="metric-desc">Contraste verificado y navegación por voz</p>
-              </div>
-
-              <div class="metric-card">
-                <div class="metric-circle" style="--percent: 100;">
-                  <span class="metric-val">100</span>
-                </div>
-                <h4 class="metric-name">Mejores Prácticas</h4>
-                <p class="metric-desc">HTTPS, estándares web y CSP rígido</p>
-              </div>
-
-              <div class="metric-card">
-                <div class="metric-circle" style="--percent: 100;">
-                  <span class="metric-val">100</span>
-                </div>
-                <h4 class="metric-name">Optimización SEO</h4>
-                <p class="metric-desc">Schema.org, Open Graph y semántica</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Contenido Pestaña 3: Generador de Código -->
-          <div class="pg-content" id="tab-generator" role="tabpanel" hidden>
-            <div class="code-export-box">
-              <div class="code-export-header">
-                <span>styles-nexus.css</span>
-                <button id="copyCodeBtn" class="btn btn-secondary btn-sm">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <div class="lab-demo">
+              <div class="code-copy-affordance" id="codeAffordance">
+                <code>npx create-craft-app</code>
+                <button class="copy-trigger" id="copyTriggerBtn" aria-label="Copy snippet">
+                  <svg class="icon-clipboard" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                   </svg>
-                  <span>Copiar CSS</span>
+                  <svg class="icon-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
                 </button>
               </div>
-              <pre class="code-export-block"><code id="exportedCodeText">:root {
-  --accent-primary: #3b82f6;
-  --accent-glow: rgba(59, 130, 246, 0.45);
-  --card-radius: 16px;
-  --glass-blur: blur(16px);
-  --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.nexus-glass-card {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: var(--glass-blur);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--card-radius);
-  transition: transform 0.4s var(--transition-smooth);
-}</code></pre>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN PROYECTOS / PORTFOLIO -->
-    <section id="proyectos" class="section projects-section">
+    <!-- SECTION 3: CRAFT STANDARDS (AUDIT) -->
+    <section id="standards" class="section">
       <div class="container">
-        <div class="section-header text-center">
-          <span class="section-eyebrow">CASOS DE ÉXITO RECIENTES</span>
-          <h2 class="section-title">Obras digitales diseñadas para destacar</h2>
-          <p class="section-subtitle">Explora algunos de nuestros proyectos con tecnología de vanguardia.</p>
+        <div class="section-header">
+          <p class="section-kicker">03 / Engineering Philosophy</p>
+          <h2 class="section-title">The Anti-Slop Code Standards</h2>
+          <p class="section-lead">
+            Real software design is defined by what you choose <em>not</em> to do.
+          </p>
         </div>
 
-        <!-- Filtros de Categorías -->
-        <div class="category-filters">
-          <button class="filter-btn active" data-filter="all">Todos (6)</button>
-          <button class="filter-btn" data-filter="saas">SaaS & Tech</button>
-          <button class="filter-btn" data-filter="creative">Creativo & Fotografía</button>
-          <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
-        </div>
-
-        <div class="projects-grid">
-          <!-- Proyecto 1: SaaS Platform -->
-          <article class="project-card glass-card" data-category="saas" data-cursor="Ver Proyecto">
-            <div class="project-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Dashboard analítico moderno con visualización de datos" loading="lazy">
-              <span class="project-tag">SaaS Analytics</span>
-            </div>
-            <div class="project-info">
-              <div class="project-meta">
-                <span class="tech-tag">React 19</span>
-                <span class="tech-tag">TypeScript</span>
-                <span class="tech-tag">Tailwind</span>
-              </div>
-              <h3 class="project-title">Aether Insights Platform</h3>
-              <p class="project-summary">Dashboard financiero interactivo con renderizado de millones de métricas por segundo a 60 FPS.</p>
-            </div>
-          </article>
-
-          <!-- Proyecto 2: Creative & Photography Portfolio (Homenaje a Darius) -->
-          <article class="project-card glass-card" data-category="creative" data-cursor="Ver Proyecto">
-            <div class="project-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80" alt="Fotografía cinematográfica con iluminación dramática" loading="lazy">
-              <span class="project-tag">Fotografía & Cine</span>
-            </div>
-            <div class="project-info">
-              <div class="project-meta">
-                <span class="tech-tag">GSAP 3D</span>
-                <span class="tech-tag">Lenis Scroll</span>
-                <span class="tech-tag">StackViewer</span>
-              </div>
-              <h3 class="project-title">D·B Cinema & Photography</h3>
-              <p class="project-summary">Portfolio inmersivo con carrusel 3D rotativo de 360°, visor apilado infinito y microanimaciones orgánicas.</p>
-            </div>
-          </article>
-
-          <!-- Proyecto 3: E-Commerce Luxury -->
-          <article class="project-card glass-card" data-category="ecommerce" data-cursor="Ver Proyecto">
-            <div class="project-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80" alt="Producto de lujo con iluminación de estudio" loading="lazy">
-              <span class="project-tag">E-Commerce</span>
-            </div>
-            <div class="project-info">
-              <div class="project-meta">
-                <span class="tech-tag">Next.js</span>
-                <span class="tech-tag">Stripe</span>
-                <span class="tech-tag">WebGL</span>
-              </div>
-              <h3 class="project-title">Chronos Horology Store</h3>
-              <p class="project-summary">Tienda boutique con visualizador 3D interactivo de producto, checkout ultra veloz y animación de compra fluida.</p>
-            </div>
-          </article>
-
-          <!-- Proyecto 4: AI Creative Studio -->
-          <article class="project-card glass-card" data-category="saas" data-cursor="Ver Proyecto">
-            <div class="project-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Arte digital abstracto fluido con gradientes" loading="lazy">
-              <span class="project-tag">AI Generative</span>
-            </div>
-            <div class="project-info">
-              <div class="project-meta">
-                <span class="tech-tag">WebGPU</span>
-                <span class="tech-tag">Python API</span>
-                <span class="tech-tag">React</span>
-              </div>
-              <h3 class="project-title">Kroma Generative AI</h3>
-              <p class="project-summary">Herramienta generativa de diseño en el navegador para directores de arte y creadores audiovisuales.</p>
-            </div>
-          </article>
-
-          <!-- Proyecto 5: Architectural Digest -->
-          <article class="project-card glass-card" data-category="creative" data-cursor="Ver Proyecto">
-            <div class="project-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Arquitectura moderna minimalista con ventanales" loading="lazy">
-              <span class="project-tag">Arquitectura</span>
-            </div>
-            <div class="project-info">
-              <div class="project-meta">
-                <span class="tech-tag">Three.js</span>
-                <span class="tech-tag">Vite</span>
-                <span class="tech-tag">CSS Pointers</span>
-              </div>
-              <h3 class="project-title">Vanguard Architecture</h3>
-              <p class="project-summary">Recorridos espaciales con soporte táctil, plano interactivo y tipografía tipográfica editorial de alta gama.</p>
-            </div>
-          </article>
-
-          <!-- Proyecto 6: Organic Coffee Brand -->
-          <article class="project-card glass-card" data-category="ecommerce" data-cursor="Ver Proyecto">
-            <div class="project-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Taza de café de especialidad con granos de café tostado" loading="lazy">
-              <span class="project-tag">Branding</span>
-            </div>
-            <div class="project-info">
-              <div class="project-meta">
-                <span class="tech-tag">Shopify Headless</span>
-                <span class="tech-tag">TypeScript</span>
-              </div>
-              <h3 class="project-title">Morisoñando Specialty Coffee</h3>
-              <p class="project-summary">Experiencia sensorial de marca con suscripción periódica personalizada, selector de molienda y video loops.</p>
-            </div>
-          </article>
+        <div class="standards-table-wrapper">
+          <table class="standards-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Anti-Pattern (AI Slop)</th>
+                <th style="width: 35%;">Craft Standard</th>
+                <th style="width: 40%;">Reasoning</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>transition: all 300ms</code></td>
+                <td><code>transition: transform 150ms var(--ease-out), opacity 150ms linear</code></td>
+                <td>Specifying properties prevents unexpected jank on layout redraws and color shifts.</td>
+              </tr>
+              <tr>
+                <td><code>transform: scale(0)</code></td>
+                <td><code>transform: scale(0.96); opacity: 0</code></td>
+                <td>Nothing appears from a zero-dimension void; subtle scales maintain spatial orientation.</td>
+              </tr>
+              <tr>
+                <td>Slow command palette open</td>
+                <td>Instant Raycast-style opening</td>
+                <td>Keyboard-initiated actions repeat 100+ times/day. Zero animation keeps muscle memory fluid.</td>
+              </tr>
+              <tr>
+                <td>Generic purple-cyan gradient blobs</td>
+                <td>Disciplined obsidian neutrals &amp; precise 1px borders</td>
+                <td>Cosmetic glow effects distract from typographic clarity and core product utility.</td>
+              </tr>
+              <tr>
+                <td>Fake marketing statistics strips</td>
+                <td>Verified facts and functional code</td>
+                <td>Generic strips ("99.8% satisfaction") are the definitive copy tell of synthetic templates.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN PRECIOS / CALCULADORA -->
-    <section id="precios" class="section pricing-section">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-eyebrow">INVERSIÓN CLARA Y TRANSPARENTE</span>
-          <h2 class="section-title">Planes adaptados a tu escala</h2>
-          <p class="section-subtitle">Sin costes ocultos. Incluye código fuente completo, derechos totales y soporte directo.</p>
+    <!-- SECTION 4: CONTACT -->
+    <section id="contact" class="section">
+      <div class="container contact-container">
+        <div class="contact-box">
+          <p class="section-kicker">04 / Connect</p>
+          <h2 class="contact-title">Let’s build something deliberate.</h2>
+          <p class="contact-lead">
+            Available for select frontend engineering contracts, design system architecture, and AI tool integration.
+          </p>
 
-          <!-- Selector Facturación Mensual / Anual -->
-          <div class="billing-toggle-wrapper">
-            <span class="billing-label" id="billingMonthlyLabel">Mensual</span>
-            <button id="billingToggle" class="billing-switch" role="switch" aria-checked="true" aria-label="Alternar facturación mensual o anual">
-              <span class="switch-handle"></span>
-            </button>
-            <span class="billing-label active" id="billingAnnualLabel">
-              Anual
-              <span class="discount-badge">Ahorra 20%</span>
-            </span>
-          </div>
-        </div>
-
-        <div class="pricing-grid">
-          <!-- Plan 1: Starter -->
-          <div class="pricing-card glass-card">
-            <div class="plan-header">
-              <h3 class="plan-name">Landing Pro</h3>
-              <p class="plan-target">Para lanzamientos de productos, startups y portfolios individuales.</p>
-              <div class="price-container">
-                <span class="currency">€</span>
-                <span class="price-val" data-monthly="1.200" data-annual="960">960</span>
-                <span class="period">/proyecto</span>
-              </div>
-            </div>
-            <ul class="plan-features">
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Diseño a medida en Figma & Código</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Rendimiento Lighthouse 95+</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 100% Adaptable a móviles y tablets</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Formulario de contacto funcional</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Entrega en 10 días laborables</li>
-            </ul>
-            <button class="btn btn-secondary btn-block select-plan-btn" data-plan="Landing Pro">Elegir Starter</button>
-          </div>
-
-          <!-- Plan 2: Pro Studio (Recomendado) -->
-          <div class="pricing-card glass-card popular-plan">
-            <div class="popular-ribbon">MÁS SOLICITADO</div>
-            <div class="plan-header">
-              <h3 class="plan-name">Full Studio Experience</h3>
-              <p class="plan-target">Para marcas consolidadas y aplicaciones web de alto impacto.</p>
-              <div class="price-container">
-                <span class="currency">€</span>
-                <span class="price-val" data-monthly="2.800" data-annual="2.240">2.240</span>
-                <span class="period">/proyecto</span>
-              </div>
-            </div>
-            <ul class="plan-features">
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Todo lo del plan Landing Pro</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Animaciones 3D avanzadas (GSAP / WebGL)</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Sistema multi-tema (Claro / Oscuro / POP)</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Visor apilado y galerías dinámicas</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Optimización SEO Técnica y Core Web Vitals</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 60 días de soporte garantizado</li>
-            </ul>
-            <button class="btn btn-primary btn-block select-plan-btn" data-plan="Full Studio Experience">Elegir Pro Studio</button>
-          </div>
-
-          <!-- Plan 3: Enterprise -->
-          <div class="pricing-card glass-card">
-            <div class="plan-header">
-              <h3 class="plan-name">Bespoke Enterprise</h3>
-              <p class="plan-target">Desarrollo a medida con backend, headless CMS y arquitectura global.</p>
-              <div class="price-container">
-                <span class="currency">€</span>
-                <span class="price-val" data-monthly="5.400" data-annual="4.320">4.320</span>
-                <span class="period">/proyecto</span>
-              </div>
-            </div>
-            <ul class="plan-features">
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Arquitectura a medida (React / Next.js / Node)</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Integración con CRM, Pasarelas y APIs</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Panel de gestión de contenidos (CMS headless)</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Auditoría de seguridad y pruebas de carga</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Soporte prioritario 24/7 y SLA dedicado</li>
-            </ul>
-            <button class="btn btn-secondary btn-block select-plan-btn" data-plan="Bespoke Enterprise">Consultar Solución</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN FAQ ACCORDION -->
-    <section id="faq" class="section faq-section">
-      <div class="container faq-container">
-        <div class="section-header text-center">
-          <span class="section-eyebrow">RESPUESTAS DIRECTAS</span>
-          <h2 class="section-title">Preguntas Frecuentes</h2>
-          <p class="section-subtitle">Todo lo que necesitas saber antes de comenzar a trabajar juntos.</p>
-        </div>
-
-        <div class="faq-list">
-          <details class="faq-item glass-card" open>
-            <summary class="faq-question">
-              <span>¿Qué tecnologías utilizas para garantizar la máxima velocidad?</span>
-              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </summary>
-            <div class="faq-answer">
-              <p>Construimos sobre fundamentos nativos modernos (HTML5 semántico, CSS3 con variables personalizadas y JavaScript modular sin sobrecarga) o sobre frameworks de vanguardia como React 19 y Next.js. Las imágenes se convierten automáticamente a formatos modernos (WebP/AVIF responsivos con lazy loading y placeholders borrosos LQIP), asegurando tiempos de carga inferiores a 300 ms.</p>
-            </div>
-          </details>
-
-          <details class="faq-item glass-card">
-            <summary class="faq-question">
-              <span>¿La página se verá y funcionará perfectamente en teléfonos móviles?</span>
-              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </summary>
-            <div class="faq-answer">
-              <p>Absolutamente. Desarrollamos con enfoque <em>Mobile-First</em>. La interfaz incluye gestos táctiles nativos (swipe en carruseles, barras de navegación fijadas con respeto a safe areas de iPhone y Android, y menús optimizados para operar con una sola mano).</p>
-            </div>
-          </details>
-
-          <details class="faq-item glass-card">
-            <summary class="faq-question">
-              <span>¿Soy propietario de todo el código fuente y diseño?</span>
-              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </summary>
-            <div class="faq-answer">
-              <p>Sí, al 100%. Te entregamos el repositorio completo, archivos de diseño y documentación. Sin licencias recurrentes ocultas ni dependencias forzadas.</p>
-            </div>
-          </details>
-
-          <details class="faq-item glass-card">
-            <summary class="faq-question">
-              <span>¿Cómo se gestiona el hosting y la publicación en internet?</span>
-              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </summary>
-            <div class="faq-answer">
-              <p>Te ayudamos a desplegar en plataformas de CDN global de última generación como Vercel, Netlify o Cloudflare Pages, con certificado SSL (HTTPS) gratuito, caché perimetral mundial y dominio personalizado.</p>
-            </div>
-          </details>
-
-          <details class="faq-item glass-card">
-            <summary class="faq-question">
-              <span>¿Qué incluye el soporte post-lanzamiento?</span>
-              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </summary>
-            <div class="faq-answer">
-              <p>Todos nuestros proyectos incluyen garantía contra cualquier defecto técnico, monitorización de tiempo de actividad y asistencia para actualizaciones de contenido y copias de seguridad.</p>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN CTA FINAL -->
-    <section class="section cta-final-section">
-      <div class="container text-center">
-        <div class="cta-banner glass-card">
-          <h2 class="cta-heading">¿Listo para construir algo extraordinario?</h2>
-          <p class="cta-subheading">Hablemos sobre tu proyecto y creemos la versión definitiva de tu presencia digital.</p>
-          <div class="cta-buttons">
-            <button class="btn btn-primary btn-lg" id="finalCtaBtn">Comenzar Mi Proyecto</button>
-            <a href="https://wa.me/34615538455?text=Hola%2C%20quiero%20desarrollar%20una%20p%C3%A1gina%20web" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">
-              <span>Contactar por WhatsApp</span>
+          <div class="contact-methods">
+            <a href="mailto:dariusbougerol@gmail.com" class="contact-card">
+              <span class="contact-label">Email</span>
+              <span class="contact-val">dariusbougerol@gmail.com</span>
+            </a>
+            <a href="https://wa.me/34615538455?text=Hello%20Darius,%20let's%20work%20together." target="_blank" rel="noopener noreferrer" class="contact-card">
+              <span class="contact-label">WhatsApp</span>
+              <span class="contact-val">+34 615 538 455</span>
+            </a>
+            <a href="https://github.com/dariustarifa" target="_blank" rel="noopener noreferrer" class="contact-card">
+              <span class="contact-label">GitHub</span>
+              <span class="contact-val">github.com/dariustarifa</span>
             </a>
           </div>
         </div>
@@ -741,171 +382,69 @@ experience.<span class="code-func">render</span>(<span class="code-string">"#vie
 
   <!-- FOOTER -->
   <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="brand-logo">
-            <span class="logo-text">NEXUS<span class="logo-dot">.</span>studio</span>
-          </div>
-          <p class="footer-tagline">Diseño digital e ingeniería web creada con estándares de clase mundial.</p>
-          <div class="system-status">
-            <span class="status-dot"></span>
-            <span class="status-label">Todos los servicios operativos</span>
-          </div>
-        </div>
-
-        <div class="footer-links-group">
-          <div class="footer-col">
-            <h4>Navegación</h4>
-            <ul>
-              <li><a href="#capacidades">Capacidades</a></li>
-              <li><a href="#playground">Playground</a></li>
-              <li><a href="#proyectos">Proyectos</a></li>
-              <li><a href="#precios">Precios</a></li>
-              <li><a href="#faq">FAQ</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4>Especialidades</h4>
-            <ul>
-              <li><a href="#proyectos">Portfolios de Autor</a></li>
-              <li><a href="#proyectos">Plataformas SaaS</a></li>
-              <li><a href="#proyectos">E-Commerce Boutique</a></li>
-              <li><a href="#proyectos">Fotografía & Audiovisual</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4>Contacto Directo</h4>
-            <ul>
-              <li><a href="mailto:dariusbougerol@gmail.com">dariusbougerol@gmail.com</a></li>
-              <li><a href="tel:+34615538455">+34 615 538 455</a></li>
-              <li><a href="https://www.instagram.com/ithe_6/" target="_blank" rel="noopener noreferrer">Instagram: @ithe_6</a></li>
-              <li><a href="https://www.linkedin.com/in/darius-bougerol-27265b329/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            </ul>
-          </div>
-        </div>
+    <div class="container footer-content">
+      <div class="footer-left">
+        <span class="footer-copy">© 2026 Darius Bougerol. All rights reserved.</span>
+        <span class="footer-sub">Crafted with taste-skill 2.5 &amp; Emil Kowalski design engineering principles.</span>
       </div>
-
-      <div class="footer-bottom">
-        <p>© 2026 Nexus Studio & Darius Bougerol. Todos los derechos reservados.</p>
-        <div class="footer-legal">
-          <a href="#hero">Privacidad</a>
-          <span class="dot-sep">·</span>
-          <a href="#hero">Términos</a>
-          <span class="dot-sep">·</span>
-          <a href="#hero" id="backToTop">Subir al inicio ↑</a>
-        </div>
+      <div class="footer-right">
+        <a href="https://github.com/dariustarifa/nexus-studio" target="_blank" rel="noopener noreferrer" class="footer-link">Source Code</a>
+        <span class="footer-sep">·</span>
+        <a href="#overview" class="footer-link">Top ↑</a>
       </div>
     </div>
   </footer>
 
-  <!-- MODAL DE CONTACTO -->
-  <div id="contactModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
-    <div class="modal-card glass-card">
-      <button class="modal-close-btn" id="closeContactModal" aria-label="Cerrar modal">&times;</button>
-      
-      <div class="modal-header">
-        <h3 id="modalTitle">Inicia tu Proyecto</h3>
-        <p>Cuéntanos tu visión y te responderemos en menos de 24 horas.</p>
-      </div>
+  <!-- SONNER TOAST STACK -->
+  <div id="sonnerRoot" class="sonner-root" aria-live="polite"></div>
 
-      <form id="contactForm" class="contact-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="formName">Nombre completo *</label>
-            <input type="text" id="formName" name="name" required placeholder="Ej. Darius Bougerol">
-          </div>
-          <div class="form-group">
-            <label for="formEmail">Correo electrónico *</label>
-            <input type="email" id="formEmail" name="email" required placeholder="darius@ejemplo.com">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="formPlan">Plan o servicio de interés</label>
-          <select id="formPlan" name="plan">
-            <option value="Landing Pro">Landing Pro (Starter)</option>
-            <option value="Full Studio Experience" selected>Full Studio Experience (Recomendado)</option>
-            <option value="Bespoke Enterprise">Bespoke Enterprise (Personalizado)</option>
-            <option value="Consulta General">Solo quiero hacer una consulta</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="formMessage">Detalles del proyecto *</label>
-          <textarea id="formMessage" name="message" rows="4" required placeholder="Cuéntanos sobre tu marca, objetivos o referencias que te gusten..."></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitFormBtn">
-          <span>Enviar Mensaje</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="22" y1="2" x2="11" y2="13"></line>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-          </svg>
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- COMMAND PALETTE MODAL (⌘K) -->
-  <div id="cmdModal" class="cmd-overlay" aria-hidden="true" role="dialog" aria-label="Paleta de comandos">
-    <div class="cmd-box glass-card">
-      <div class="cmd-search-row">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <!-- COMMAND PALETTE (INSTANT) -->
+  <div id="cmdPalette" class="cmd-palette" aria-hidden="true">
+    <div class="cmd-dialog">
+      <div class="cmd-bar">
+        <svg class="cmd-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <input type="text" id="cmdInput" placeholder="Escribe un comando o navega (ej. 'Precios', 'Tema', 'Contacto')..." autocomplete="off">
-        <kbd class="esc-badge">ESC</kbd>
+        <input type="text" id="cmdSearchInput" placeholder="Type a destination or action..." autocomplete="off">
+        <kbd class="kbd">ESC</kbd>
       </div>
 
-      <div class="cmd-results" id="cmdResults">
-        <div class="cmd-group-label">Acciones Rápidas</div>
-        <div class="cmd-item" data-action="contact">
-          <span class="cmd-item-icon">✉️</span>
-          <span class="cmd-item-text">Abrir formulario de contacto</span>
-          <span class="cmd-item-hint">Acción</span>
+      <div class="cmd-options" id="cmdOptions">
+        <div class="cmd-group">Sections</div>
+        <div class="cmd-item" data-goto="#work">
+          <span>01 / Selected Systems &amp; Interfaces</span>
+          <span class="cmd-tag">Jump</span>
         </div>
-        <div class="cmd-item" data-action="toggle-theme">
-          <span class="cmd-item-icon">🌗</span>
-          <span class="cmd-item-text">Alternar tema Claro / Oscuro</span>
-          <span class="cmd-item-hint">Tema</span>
+        <div class="cmd-item" data-goto="#lab">
+          <span>02 / Interactive Component Lab</span>
+          <span class="cmd-tag">Jump</span>
         </div>
-        <div class="cmd-item" data-action="toggle-sound">
-          <span class="cmd-item-icon">🔔</span>
-          <span class="cmd-item-text">Alternar efectos de sonido</span>
-          <span class="cmd-item-hint">Audio</span>
+        <div class="cmd-item" data-goto="#standards">
+          <span>03 / The Anti-Slop Code Standards</span>
+          <span class="cmd-tag">Jump</span>
+        </div>
+        <div class="cmd-item" data-goto="#contact">
+          <span>04 / Contact &amp; Availability</span>
+          <span class="cmd-tag">Jump</span>
         </div>
 
-        <div class="cmd-group-label">Navegación</div>
-        <div class="cmd-item" data-nav="#capacidades">
-          <span class="cmd-item-icon">⚡</span>
-          <span class="cmd-item-text">Ir a Capacidades & Arquitectura</span>
+        <div class="cmd-group">Actions</div>
+        <div class="cmd-item" data-action="spawn-toast">
+          <span>Spawn Sonner Toast Alert</span>
+          <span class="cmd-tag">Action</span>
         </div>
-        <div class="cmd-item" data-nav="#playground">
-          <span class="cmd-item-icon">🧪</span>
-          <span class="cmd-item-text">Ir al Playground Interactivo</span>
+        <div class="cmd-item" data-action="toggle-theme">
+          <span>Toggle Color Theme</span>
+          <span class="cmd-tag">Theme</span>
         </div>
-        <div class="cmd-item" data-nav="#proyectos">
-          <span class="cmd-item-icon">💼</span>
-          <span class="cmd-item-text">Explorar Proyectos Realizados</span>
-        </div>
-        <div class="cmd-item" data-nav="#precios">
-          <span class="cmd-item-icon">🏷️</span>
-          <span class="cmd-item-text">Ver Tabla de Precios</span>
-        </div>
-        <div class="cmd-item" data-nav="#faq">
-          <span class="cmd-item-icon">❓</span>
-          <span class="cmd-item-text">Consultar Preguntas Frecuentes</span>
+        <div class="cmd-item" data-action="toggle-audio">
+          <span>Toggle Audio Haptic Feedback</span>
+          <span class="cmd-tag">Audio</span>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- SISTEMA DE NOTIFICACIONES TOAST -->
-  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
 
   <script src="script.js"></script>
 </body>
