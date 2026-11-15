@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Morí Soñando — Specialty Coffee &amp; Pancakes · Granada</title>
-  <meta name="description" content="Cafetería de especialidad y pancakes artesanales en Granada. Calle Moral de la Magdalena, 3. Brunch, café de finca y recetas hechas a mano a diario.">
+  <meta name="description" content="Café de especialidad y pancakes japoneses artesanales en Granada. Calle Moral de la Magdalena, 3.">
 
-  <!-- Tipografía exclusiva de Fontshare: Clash Display, General Sans & Cabinet Grotesk -->
+  <!-- Tipografía Fontshare: Clash Display, General Sans & Cabinet Grotesk -->
   <link rel="preconnect" href="https://api.fontshare.com">
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=general-sans@400,500,600&f[]=cabinet-grotesk@700,800&display=swap" rel="stylesheet">
 
@@ -15,608 +15,370 @@
 <body>
 
   <!-- CONTENEDOR ENTORNO MÓVIL (MOBILE-FIRST) -->
-  <div class="mobile-viewport" id="appViewport">
+  <div class="mobile-app" id="mobileApp">
 
-    <!-- 1. PANTALLA DE ENTRADA / VIDEO HERO EXPERIMENTAL -->
-    <section class="launch-screen" id="launchScreen">
-      <!-- Video / Loop cinematográfico de pancakes -->
-      <div class="video-container">
-        <div class="video-overlay"></div>
-        <!-- Iframe de video cinematográfico de Morisoñando -->
-        <iframe 
-          id="heroVideo"
-          class="bg-video-frame"
-          src="https://www.youtube-nocookie.com/embed/LtIbkp0vARo?autoplay=1&mute=1&controls=0&loop=1&playlist=LtIbkp0vARo&playsinline=1&rel=0&modestbranding=1" 
-          title="Morí Soñando — Vídeo promocional de pancakes y café" 
-          allow="autoplay; encrypted-media"
-          loading="eager">
-        </iframe>
-        <!-- Fallback fotográfico de alta resolución con profundidad -->
-        <div class="video-backup-poster" style="background-image: url('https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=1000&q=85');"></div>
-      </div>
-
-      <div class="launch-content">
-        <div class="launch-badge">
-          <span class="badge-dot"></span>
-          <span>Calle Moral de la Magdalena, 3 · Granada</span>
-        </div>
-
-        <div class="launch-logo-wrap">
-          <img src="logo-opt.png" alt="Morí Soñando Granada" class="launch-logo">
-        </div>
-
-        <h1 class="launch-title">
-          Pancakes recién horneados, sirope de arce puro y café de finca tostado a mano.
-        </h1>
-
-        <button class="btn-enter" id="btnEnter">
-          <span class="btn-enter-text">Ver Carta y Menú</span>
-          <span class="btn-enter-arrow">↓</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- 2. BARRA SUPERIOR FIJA (HEADER) -->
-    <header class="app-header" id="appHeader">
-      <div class="header-left">
-        <a href="#inicio" class="logo-anchor" id="logoToTop">
-          <img src="logo-opt.png" alt="Morí Soñando" class="header-logo">
+    <!-- HEADER SUPERIOR MODERNO (INTEGRADO ARRIBA) -->
+    <header class="top-nav-bar" id="topNavBar">
+      <!-- Fila 1: Logo, Google Reviews y Selector Idioma -->
+      <div class="nav-brand-row">
+        <a href="#panel-0" class="brand-link" id="brandHomeBtn">
+          <img src="logo-opt.png" alt="Morí Soñando" class="brand-logo">
         </a>
+
+        <div class="nav-utilities">
+          <!-- Toggle idioma ES / EN -->
+          <button class="lang-toggle" id="langSwitch" aria-label="Cambiar idioma">
+            <span class="lang-opt active" data-lang="es">ES</span>
+            <span class="lang-divider">/</span>
+            <span class="lang-opt" data-lang="en">EN</span>
+          </button>
+
+          <!-- Reseñas Google Maps -->
+          <a 
+            href="https://www.google.com/maps/search/?api=1&query=Moriso%C3%B1ando+Granada+Calle+Moral+de+la+Magdalena+3" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="google-reviews-chip"
+            title="Ver reseñas en Google Maps"
+          >
+            <span class="star-badge">★ 4.9</span>
+            <span class="google-label">Google</span>
+          </a>
+        </div>
       </div>
 
-      <div class="header-right">
-        <!-- Selector de idioma ES / EN sin recarga -->
-        <button class="lang-switch" id="langSwitch" aria-label="Cambiar idioma a inglés">
-          <span class="lang-opt active" data-lang="es">ES</span>
-          <span class="lang-sep">/</span>
-          <span class="lang-opt" data-lang="en">EN</span>
-        </button>
-
-        <!-- Botón de Reseñas de Google Oficial -->
-        <a 
-          href="https://www.google.com/maps/search/?api=1&query=Moriso%C3%B1ando+Granada+Calle+Moral+de+la+Magdalena+3" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="review-pill"
-          title="Ver o dejar reseña en Google Maps"
-        >
-          <svg class="google-icon" width="14" height="14" viewBox="0 0 24 24">
-            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/>
-            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.35 24 12 24Z"/>
-            <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.14-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15Z"/>
-            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98Z"/>
-          </svg>
-          <span class="review-stars">★ 4.9</span>
-          <span class="review-label" data-i18n="reviews">Reseñas</span>
-        </a>
-      </div>
+      <!-- Fila 2: Selector Horizontal de Espacios (Pills de Navegación) -->
+      <nav class="spaces-nav" aria-label="Espacios de la carta">
+        <div class="spaces-track" id="spacesTrack">
+          <button class="space-tab active" data-index="0">
+            <span class="tab-emoji">🥞</span>
+            <span data-i18n="tab_pancakes">Pancakes</span>
+          </button>
+          <button class="space-tab" data-index="1">
+            <span class="tab-emoji">☕</span>
+            <span data-i18n="tab_coffee">Café de Finca</span>
+          </button>
+          <button class="space-tab" data-index="2">
+            <span class="tab-emoji">🥪</span>
+            <span data-i18n="tab_brunch">Salados</span>
+          </button>
+          <button class="space-tab" data-index="3">
+            <span class="tab-emoji">🍹</span>
+            <span data-i18n="tab_drinks">Bebidas</span>
+          </button>
+          <button class="space-tab" data-index="4">
+            <span class="tab-emoji">✨</span>
+            <span data-i18n="tab_about">Nosotros</span>
+          </button>
+        </div>
+      </nav>
     </header>
 
-    <!-- 3. CUERPO DE LA APP / VISTAS -->
-    <main class="app-main">
+    <!-- LIENZO DE DESPLAZAMIENTO HORIZONTAL (ESPACIOS EN PARALELO) -->
+    <div class="horizontal-slider" id="horizontalSlider">
 
-      <!-- PESTAÑA: CARTA / MENÚ -->
-      <section class="view-section active" id="viewMenu">
-        
-        <!-- Píldoras de categoría -->
-        <div class="menu-tabs-wrapper">
-          <div class="menu-tabs" role="tablist">
-            <button class="menu-tab active" data-cat="pancakes" role="tab">
-              <span class="cat-icon">🥞</span>
-              <span data-i18n="cat_pancakes">Pancakes</span>
-            </button>
-            <button class="menu-tab" data-cat="coffee" role="tab">
-              <span class="cat-icon">☕</span>
-              <span data-i18n="cat_coffee">Café de Finca</span>
-            </button>
-            <button class="menu-tab" data-cat="brunch" role="tab">
-              <span class="cat-icon">🥪</span>
-              <span data-i18n="cat_brunch">Brunch &amp; Salados</span>
-            </button>
-            <button class="menu-tab" data-cat="drinks" role="tab">
-              <span class="cat-icon">🍹</span>
-              <span data-i18n="cat_drinks">Bebidas</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Lista de productos -->
-        <div class="items-stream" id="itemsStream">
-
-          <!-- PANCAKES -->
-          <div class="category-block" data-section="pancakes">
-            <div class="category-header">
-              <h2 class="category-title" data-i18n="pancakes_title">Pancakes de Autor</h2>
-              <p class="category-subtitle" data-i18n="pancakes_sub">
-                Masa batida a mano cada mañana. Servidos calientes en torres de 3 pisos esponjosos.
-              </p>
-            </div>
-
-            <div class="cards-list">
-              <!-- Item 1: Nutella & Avellana -->
-              <article class="food-card" data-item-id="nutella-stack">
-                <div class="food-img-frame">
-                  <img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=700&q=85" alt="Pancake Nutella y Avellana" loading="lazy">
-                  <span class="food-badge">Top Seller</span>
-                </div>
-                <div class="food-details">
-                  <div class="food-headline">
-                    <h3 class="food-name" data-i18n="pancake1_name">Nutella &amp; Avellana Tostada</h3>
-                    <span class="food-price">8,90 €</span>
-                  </div>
-                  <p class="food-desc" data-i18n="pancake1_desc">
-                    Tres pancakes suflé, ganache templada de Nutella artesanal, avellanas garrapiñadas de la comarca, plátano flameado y cacao puro.
-                  </p>
-                  <div class="food-action-row">
-                    <span class="food-tag">Casero</span>
-                    <button class="btn-add-item" data-name="Nutella &amp; Avellana" data-price="8.90">
-                      <span>+ Añadir</span>
-                    </button>
-                  </div>
-                </div>
-              </article>
-
-              <!-- Item 2: Matcha & Chocolate Blanco -->
-              <article class="food-card" data-item-id="matcha-stack">
-                <div class="food-img-frame">
-                  <img src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=700&q=85" alt="Pancakes de Matcha Uji" loading="lazy">
-                  <span class="food-badge specialty">Matcha Uji</span>
-                </div>
-                <div class="food-details">
-                  <div class="food-headline">
-                    <h3 class="food-name" data-i18n="pancake2_name">Matcha Ceremonial &amp; Choco Blanco</h3>
-                    <span class="food-price">9,50 €</span>
-                  </div>
-                  <p class="food-desc" data-i18n="pancake2_desc">
-                    Infusión de té matcha japonés grado ceremonial en la masa, baño de chocolate blanco templado, frambuesas ácidas y ralladura de lima.
-                  </p>
-                  <div class="food-action-row">
-                    <span class="food-tag">Exclusivo</span>
-                    <button class="btn-add-item" data-name="Matcha Ceremonial" data-price="9.50">
-                      <span>+ Añadir</span>
-                    </button>
-                  </div>
-                </div>
-              </article>
-
-              <!-- Item 3: Caramelo Salado & Pecanas -->
-              <article class="food-card" data-item-id="caramel-stack">
-                <div class="food-img-frame">
-                  <img src="https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b7?auto=format&fit=crop&w=700&q=85" alt="Pancakes de Caramelo Salado" loading="lazy">
-                </div>
-                <div class="food-details">
-                  <div class="food-headline">
-                    <h3 class="food-name" data-i18n="pancake3_name">Caramelo Salado &amp; Nuez Pecana</h3>
-                    <span class="food-price">8,50 €</span>
-                  </div>
-                  <p class="food-desc" data-i18n="pancake3_desc">
-                    Toffee casero con mantequilla de pasto y sal marina virgen, nueces pecanas tostadas al romero y quenelle de mantequilla batida.
-                  </p>
-                  <div class="food-action-row">
-                    <span class="food-tag">Favorito</span>
-                    <button class="btn-add-item" data-name="Caramelo Salado &amp; Pecana" data-price="8.50">
-                      <span>+ Añadir</span>
-                    </button>
-                  </div>
-                </div>
-              </article>
-
-              <!-- Item 4: Frutos Rojos & Ricotta -->
-              <article class="food-card" data-item-id="berries-stack">
-                <div class="food-img-frame">
-                  <img src="https://images.unsplash.com/photo-1575853121743-60c24f0a7502?auto=format&fit=crop&w=700&q=85" alt="Pancakes Frutos Rojos Silvestres" loading="lazy">
-                </div>
-                <div class="food-details">
-                  <div class="food-headline">
-                    <h3 class="food-name" data-i18n="pancake4_name">Frutos Silvestres &amp; Ricotta Limón</h3>
-                    <span class="food-price">8,20 €</span>
-                  </div>
-                  <p class="food-desc" data-i18n="pancake4_desc">
-                    Compota artesana de arándanos y moras reducida a fuego lento, crema fresca de ricotta con limón de la Vega y sirope de arce Grado A.
-                  </p>
-                  <div class="food-action-row">
-                    <span class="food-tag">Fresco</span>
-                    <button class="btn-add-item" data-name="Frutos Silvestres &amp; Ricotta" data-price="8.20">
-                      <span>+ Añadir</span>
-                    </button>
-                  </div>
-                </div>
-              </article>
-
-              <!-- Item 5: Clásico Americano Fluffy -->
-              <article class="food-card" data-item-id="classic-stack">
-                <div class="food-img-frame">
-                  <img src="https://images.unsplash.com/photo-1598214886806-c87b84b7078b?auto=format&fit=crop&w=700&q=85" alt="Pancake Clásico Americano" loading="lazy">
-                </div>
-                <div class="food-details">
-                  <div class="food-headline">
-                    <h3 class="food-name" data-i18n="pancake5_name">El Clásico Americano Fluffy</h3>
-                    <span class="food-price">7,20 €</span>
-                  </div>
-                  <p class="food-desc" data-i18n="pancake5_desc">
-                    La receta original. Tres pisos dorados con dados de mantequilla artesana fundente, jarrita de sirope de arce canadiense puro 100% y escamas de sal.
-                  </p>
-                  <div class="food-action-row">
-                    <span class="food-tag">Tradición</span>
-                    <button class="btn-add-item" data-name="Clásico Americano" data-price="7.20">
-                      <span>+ Añadir</span>
-                    </button>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-
-          <!-- CAFÉ DE ESPECIALIDAD -->
-          <div class="category-block" data-section="coffee">
-            <div class="category-header">
-              <h2 class="category-title" data-i18n="coffee_title">Café de Especialidad</h2>
-              <p class="category-subtitle" data-i18n="coffee_sub">
-                Granos de origen ético, tueste medio y leche fresca de granja ecológica andaluza (opción vegetal sin coste).
-              </p>
-            </div>
-
-            <div class="cards-list">
-              <!-- Coffee 1: Flat White -->
-              <article class="food-card" data-item-id="flat-white">
-                <div class="food-img-frame">
-                  <img src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=700&q=85" alt="Flat White Café" loading="lazy">
-                </div>
-                <div class="food-details">
-                  <div class="food-headline">
-                    <h3 class="food-name" data-i18n="coffee1_name">Flat White</h3>
-                    <span class="food-price">2,40 €</span>
-                  </div>
-                  <p class="food-desc" data-i18n="coffee1_desc">
-                    Doble shot de espresso de finca con leche emulsionada en micro-espuma sedosa a 62°C. Notas a toffee y avellana.
-                  </p>
-                  <div class="food-action-row">
-                    <span class="food-tag">Micro-Lote</span>
-                    <button class="btn-add-item" data-name="Flat White" data-price="2.40">
-                      <span>+ Añadir</span>
-                    </button>
-                  </div>
-                </div>
-              </article>
-
-              <!-- Coffee 2: Cold Brew 18h -->
-              <article class="food-card" data-item-id="cold-brew">
-                <div class="food-img-frame">
-                  <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=700&q=85" alt="Cold Brew de Maceración 18h" loading="lazy">
-                  <span class="food-badge">18 Horas</span>
-                </div>
-                <div class="food-details">
-                  <div class="food-headline">
-                    <h3 class="food-name" data-i18n="coffee2_name">Cold Brew Infusión 18h</h3>
-                    <span class="food-price">3,20 €</span>
-                  </div>
-                  <p class="food-desc" data-i18n="coffee2_desc">
-                    Extracción en frío gota a gota durante 18 horas. Cuerpo aterciopelado, acidez vinosa baja y notas a cacao y piel de naranja. Servido sobre roca de hielo.
-                  </p>
-                  <div class="food-action-row">
-                    <span class="food-tag">Refrescante</span>
-                    <button class="btn-add-item" data-name="Cold Brew 18h" data-price="3.20">
-                      <span>+ Añadir</span>
-                    </button>
-                  </div>
-                </div>
-              </article>
-
-              <!-- Coffee 3: Iced Pistachio Latte -->
-              <article class="food-card" data-item-id="pistachio-latte">
-                <div class="food-img-frame">
-                  <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=700&q=85" alt="Iced Pistachio Latte" loading="lazy">
-                </div>
-                <div class="food-details">
-                  <div class="food-headline">
-                    <h3 class="food-name" data-i18n="coffee3_name">Iced Pistachio Latte</h3>
-                    <span class="food-price">3,80 €</span>
-                  </div>
-                  <p class="food-desc" data-i18n="coffee3_desc">
-                    Espresso doble de origen etíope sobre leche de avena bio, crema pura de pistacho de Sicilia y escamas crujientes de pistacho tostado.
-                  </p>
-                  <div class="food-action-row">
-                    <span class="food-tag">Signature</span>
-                    <button class="btn-add-item" data-name="Iced Pistachio Latte" data-price="3.80">
-                      <span>+ Añadir</span>
-                    </button>
-                  </div>
-                </div>
-              </article>
-
-              <!-- Coffee 4: Espresso Doble -->
-              <article class="food-card" data-item-id="espresso-doble">
-                <div class="food-img-frame">
-                  <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=700&q=85" alt="Espresso Doble de Especialidad" loading="lazy">
-                </div>
-                <div class="food-details">
-                  <div class="food-headline">
-                    <h3 class="food-name" data-i18n="coffee4_name">Espresso Doble Origen Único</h3>
-                    <span class="food-price">1,90 €</span>
-                  </div>
-                  <p class="food-desc" data-i18n="coffee4_desc">
-                    Extracción precisa a 9 bar en cafetera de palanca. Crema dorada atigrada, notas a jazmín y final dulce de caña de azúcar.
-                  </p>
-                  <div class="food-action-row">
-                    <span class="food-tag">Puro</span>
-                    <button class="btn-add-item" data-name="Espresso Doble" data-price="1.90">
-                      <span>+ Añadir</span>
-                    </button>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-
-          <!-- BRUNCH & SALADOS -->
-          <div class="category-block" data-section="brunch">
-            <div class="category-header">
-              <h2 class="category-title" data-i18n="brunch_title">Brunch &amp; Salados</h2>
-              <p class="category-subtitle" data-i18n="brunch_sub">
-                Huevos de granja ecológica local y pan brioche artesano de masa madre.
-              </p>
-            </div>
-
-            <div class="cards-list">
-              <!-- Brunch 1: Pancake Salado Bacon & Huevo -->
-              <article class="food-card" data-item-id="savory-bacon-pancake">
-                <div class="food-img-frame">
-                  <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=700&q=85" alt="Pancake Salado Bacon y Huevo" loading="lazy">
-                  <span class="food-badge">Brunch Épico</span>
-                </div>
-                <div class="food-details">
-                  <div class="food-headline">
-                    <h3 class="food-name" data-i18n="brunch1_name">Pancake Salado Bacon &amp; Huevo</h3>
-                    <span class="food-price">9,90 €</span>
-                  </div>
-                  <p class="food-desc" data-i18n="brunch1_desc">
-                    Dos pancakes esponjosos, bacon curado crujiente, huevo poché con yema líquida y baño de sirope de arce infusionado con chili suave.
-                  </p>
-                  <div class="food-action-row">
-                    <span class="food-tag">Salado</span>
-                    <button class="btn-add-item" data-name="Pancake Bacon &amp; Huevo" data-price="9.90">
-                      <span>+ Añadir</span>
-                    </button>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-
-          <!-- BEBIDAS & MORISOÑANDO ICÓNICO -->
-          <div class="category-block" data-section="drinks">
-            <div class="category-header">
-              <h2 class="category-title" data-i18n="drinks_title">Bebidas de la Casa</h2>
-              <p class="category-subtitle" data-i18n="drinks_sub">
-                El alma caribeña y andaluza que da nombre a nuestro espacio.
-              </p>
-            </div>
-
-            <div class="cards-list">
-              <!-- Drink 1: Morisoñando Tradicional -->
-              <article class="food-card" data-item-id="morisonando-drink">
-                <div class="food-img-frame">
-                  <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=700&q=85" alt="Bebida Morisoñando Tradicional" loading="lazy">
-                  <span class="food-badge specialty">La Leyenda</span>
-                </div>
-                <div class="food-details">
-                  <div class="food-headline">
-                    <h3 class="food-name" data-i18n="drink1_name">Morisoñando Tradicional</h3>
-                    <span class="food-price">3,60 €</span>
-                  </div>
-                  <p class="food-desc" data-i18n="drink1_desc">
-                    Zumo de naranja valenciana recién exprimido batido en frío con leche evaporada, vainilla pura de Madagascar y hielo picado. La bebida que te hace soñar despierto.
-                  </p>
-                  <div class="food-action-row">
-                    <span class="food-tag">Inolvidable</span>
-                    <button class="btn-add-item" data-name="Morisoñando Tradicional" data-price="3.60">
-                      <span>+ Añadir</span>
-                    </button>
-                  </div>
-                </div>
-              </article>
-
-              <!-- Drink 2: Matcha Latte Uji -->
-              <article class="food-card" data-item-id="matcha-latte">
-                <div class="food-img-frame">
-                  <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=700&q=85" alt="Té Matcha Latte" loading="lazy">
-                </div>
-                <div class="food-details">
-                  <div class="food-headline">
-                    <h3 class="food-name" data-i18n="drink2_name">Matcha Latte Uji Orgánico</h3>
-                    <span class="food-price">3,50 €</span>
-                  </div>
-                  <p class="food-desc" data-i18n="drink2_desc">
-                    Té verde matcha japonés molido en piedra en Kioto, batido artesanalmente con batidor de bambú chasen y leche emulsionada.
-                  </p>
-                  <div class="food-action-row">
-                    <span class="food-tag">Antioxidante</span>
-                    <button class="btn-add-item" data-name="Matcha Latte Uji" data-price="3.50">
-                      <span>+ Añadir</span>
-                    </button>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- PESTAÑA: QUIÉNES SOMOS (HISTORIA & ESPACIO) -->
-      <section class="view-section" id="viewAbout" hidden>
-        <div class="about-hero">
-          <div class="about-hero-img" style="background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=85');"></div>
-          <div class="about-hero-overlay"></div>
-          <div class="about-hero-text">
-            <span class="about-kicker" data-i18n="about_kicker">Granada · Moral de la Magdalena</span>
-            <h2 class="about-title" data-i18n="about_title">Un refugio para desayunar sin prisas.</h2>
-          </div>
-        </div>
-
-        <div class="about-body">
-          <div class="about-story">
-            <p class="story-lead" data-i18n="story_p1">
-              Morí Soñando nació en el corazón de Granada con una obsesión sencilla: traer la alegría del auténtico brunch y los mejores pancakes esponjosos, fusionados con café de especialidad de micro-lotes andaluces.
-            </p>
-            <p data-i18n="story_p2">
-              Nuestro nombre rinde homenaje a la mítica bebida dominicana "Morir Soñando": ese momento exacto en el que pruebas algo tan rico que te transporta. En Calle Moral de la Magdalena 3 no usamos mezclas prefabricadas. La masa de los pancakes se bate a mano con harina ecológica cada mañana, las compotas se reducen a fuego lento y cada taza de café se extrae con gramaje y temperatura calibrados.
+      <!-- ESPACIO 0: PANCAKES DE AUTOR -->
+      <section class="space-pane" id="pane-0" data-index="0">
+        <div class="pane-content">
+          <div class="pane-headline">
+            <span class="pane-eyebrow" data-i18n="pancakes_eyebrow">01 / Especialidad Artesanal</span>
+            <h1 class="pane-title" data-i18n="pancakes_title">Pancakes de Autor</h1>
+            <p class="pane-subtitle" data-i18n="pancakes_sub">
+              Masa batida a mano cada mañana con harina ecológica. Torres suflé de tres pisos cocinadas al momento.
             </p>
           </div>
 
-          <!-- Puntos clave del manifiesto -->
-          <div class="manifesto-grid">
-            <div class="manifesto-card">
-              <span class="m-icon">🥞</span>
-              <h4 data-i18n="m1_title">Pancakes Suflé</h4>
-              <p data-i18n="m1_desc">Aireados, esponjosos y cocinados a la plancha en el momento. Nunca recalentados.</p>
-            </div>
-            <div class="manifesto-card">
-              <span class="m-icon">☕</span>
-              <h4 data-i18n="m2_title">Café Ético</h4>
-              <p data-i18n="m2_desc">100% Arábica de especialidad trazable desde la finca hasta tu taza.</p>
-            </div>
-            <div class="manifesto-card">
-              <span class="m-icon">🌿</span>
-              <h4 data-i18n="m3_title">Ingredientes Reales</h4>
-              <p data-i18n="m3_desc">Huevos camperos, fruta fresca del día y sirope de arce canadiense puro.</p>
-            </div>
-          </div>
+          <div class="cards-flow">
+            <!-- Pancake 1: Nutella & Avellana -->
+            <article class="food-card">
+              <div class="food-media">
+                <img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=700&q=85" alt="Pancake Nutella y Avellana" loading="lazy">
+                <span class="food-tag-badge">Favorito</span>
+              </div>
+              <div class="food-body">
+                <div class="food-title-row">
+                  <h3 class="food-title" data-i18n="p1_name">Nutella &amp; Avellana Tostada</h3>
+                  <span class="food-price">8,90 €</span>
+                </div>
+                <p class="food-desc" data-i18n="p1_desc">
+                  Ganache templada de Nutella artesanal, avellanas garrapiñadas de Granada, plátano flameado y lluvia de cacao puro.
+                </p>
+              </div>
+            </article>
 
-          <!-- GRAN CTA PARA VOLVER A LA CARTA -->
-          <div class="about-cta-box">
-            <h3 data-i18n="cta_heading">¿Listo para probar los mejores pancakes de Granada?</h3>
-            <p data-i18n="cta_sub">Explora nuestra carta completa y elige tu mesa.</p>
-            <button class="btn-giant-cta" id="btnGoToMenu">
-              <span data-i18n="cta_btn">Ver la Carta Completa</span>
-              <span class="arrow-right">→</span>
-            </button>
-          </div>
+            <!-- Pancake 2: Matcha Uji & Chocolate Blanco -->
+            <article class="food-card">
+              <div class="food-media">
+                <img src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=700&q=85" alt="Pancake Matcha Uji" loading="lazy">
+                <span class="food-tag-badge accent-badge">Matcha Uji</span>
+              </div>
+              <div class="food-body">
+                <div class="food-title-row">
+                  <h3 class="food-title" data-i18n="p2_name">Matcha Ceremonial &amp; Choco Blanco</h3>
+                  <span class="food-price">9,50 €</span>
+                </div>
+                <p class="food-desc" data-i18n="p2_desc">
+                  Té matcha japonés grado ceremonial en la masa, baño de chocolate blanco templado, frambuesas frescas y ralladura de lima.
+                </p>
+              </div>
+            </article>
 
-          <!-- Información práctica del local -->
-          <div class="info-strip">
-            <div class="info-item">
-              <span class="info-label" data-i18n="address_label">Dirección</span>
-              <span class="info-val">Calle Moral de la Magdalena, 3<br>18002 Granada, España</span>
-            </div>
-            <div class="info-item">
-              <span class="info-label" data-i18n="hours_label">Horario de Cocina</span>
-              <span class="info-val">Lunes a Domingo<br><strong>09:00 — 16:30</strong></span>
-            </div>
+            <!-- Pancake 3: Caramelo Salado & Pecana -->
+            <article class="food-card">
+              <div class="food-media">
+                <img src="https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b7?auto=format&fit=crop&w=700&q=85" alt="Pancake Caramelo Salado" loading="lazy">
+              </div>
+              <div class="food-body">
+                <div class="food-title-row">
+                  <h3 class="food-title" data-i18n="p3_name">Caramelo Salado &amp; Nuez Pecana</h3>
+                  <span class="food-price">8,50 €</span>
+                </div>
+                <p class="food-desc" data-i18n="p3_desc">
+                  Toffee casero con mantequilla de pasto y sal marina virgen, nueces pecanas tostadas al romero y quenelle de mantequilla batida.
+                </p>
+              </div>
+            </article>
+
+            <!-- Pancake 4: Frutos Silvestres & Ricotta -->
+            <article class="food-card">
+              <div class="food-media">
+                <img src="https://images.unsplash.com/photo-1575853121743-60c24f0a7502?auto=format&fit=crop&w=700&q=85" alt="Pancake Frutos Silvestres" loading="lazy">
+              </div>
+              <div class="food-body">
+                <div class="food-title-row">
+                  <h3 class="food-title" data-i18n="p4_name">Frutos Silvestres &amp; Ricotta Limón</h3>
+                  <span class="food-price">8,20 €</span>
+                </div>
+                <p class="food-desc" data-i18n="p4_desc">
+                  Compota casera de arándanos y moras reducidas a fuego lento, crema fresca de ricotta con limón de la Vega y sirope de arce Grado A.
+                </p>
+              </div>
+            </article>
+
+            <!-- Pancake 5: Clásico Americano Fluffy -->
+            <article class="food-card">
+              <div class="food-media">
+                <img src="https://images.unsplash.com/photo-1598214886806-c87b84b7078b?auto=format&fit=crop&w=700&q=85" alt="Pancake Clásico Americano" loading="lazy">
+              </div>
+              <div class="food-body">
+                <div class="food-title-row">
+                  <h3 class="food-title" data-i18n="p5_name">El Clásico Americano Fluffy</h3>
+                  <span class="food-price">7,20 €</span>
+                </div>
+                <p class="food-desc" data-i18n="p5_desc">
+                  La receta madre. Tres pisos dorados con mantequilla artesana fundente, jarrita de sirope de arce canadiense 100% puro y escamas de sal.
+                </p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA: OPINIONES / GOOGLE REVIEWS -->
-      <section class="view-section" id="viewReviews" hidden>
-        <div class="reviews-wrapper">
-          <div class="reviews-header">
-            <div class="rating-huge">4.9</div>
-            <div class="rating-stars">★★★★★</div>
-            <p class="rating-count" data-i18n="reviews_count">Puntuación media en Google Maps (+340 opiniones)</p>
+      <!-- ESPACIO 1: CAFÉ DE FINCA -->
+      <section class="space-pane" id="pane-1" data-index="1">
+        <div class="pane-content">
+          <div class="pane-headline">
+            <span class="pane-eyebrow" data-i18n="coffee_eyebrow">02 / Tueste y Extracción</span>
+            <h2 class="pane-title" data-i18n="coffee_title">Café de Especialidad</h2>
+            <p class="pane-subtitle" data-i18n="coffee_sub">
+              Granos de finca 100% arábica tostados en Andalucía, leche fresca de granja ecológica o bebida vegetal de avena bio.
+            </p>
+          </div>
+
+          <div class="cards-flow">
+            <!-- Cafe 1: Flat White -->
+            <article class="food-card">
+              <div class="food-media">
+                <img src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=700&q=85" alt="Flat White Café" loading="lazy">
+              </div>
+              <div class="food-body">
+                <div class="food-title-row">
+                  <h3 class="food-title" data-i18n="c1_name">Flat White</h3>
+                  <span class="food-price">2,40 €</span>
+                </div>
+                <p class="food-desc" data-i18n="c1_desc">
+                  Doble espresso de origen con leche emulsionada en micro-espuma sedosa a 62°C. Notas a toffee y avellana.
+                </p>
+              </div>
+            </article>
+
+            <!-- Cafe 2: Cold Brew 18h -->
+            <article class="food-card">
+              <div class="food-media">
+                <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=700&q=85" alt="Cold Brew de Maceración 18h" loading="lazy">
+                <span class="food-tag-badge">18 Horas</span>
+              </div>
+              <div class="food-body">
+                <div class="food-title-row">
+                  <h3 class="food-title" data-i18n="c2_name">Cold Brew Infusión 18h</h3>
+                  <span class="food-price">3,20 €</span>
+                </div>
+                <p class="food-desc" data-i18n="c2_desc">
+                  Extracción en frío gota a gota durante 18 horas. Cuerpo aterciopelado, acidez vinosa suave y notas a cacao y piel de naranja.
+                </p>
+              </div>
+            </article>
+
+            <!-- Cafe 3: Iced Pistachio Latte -->
+            <article class="food-card">
+              <div class="food-media">
+                <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=700&q=85" alt="Iced Pistachio Latte" loading="lazy">
+              </div>
+              <div class="food-body">
+                <div class="food-title-row">
+                  <h3 class="food-title" data-i18n="c3_name">Iced Pistachio Latte</h3>
+                  <span class="food-price">3,80 €</span>
+                </div>
+                <p class="food-desc" data-i18n="c3_desc">
+                  Espresso doble sobre leche de avena bio, crema pura de pistacho de Sicilia y escamas crujientes de pistacho tostado.
+                </p>
+              </div>
+            </article>
+
+            <!-- Cafe 4: Espresso Doble -->
+            <article class="food-card">
+              <div class="food-media">
+                <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=700&q=85" alt="Espresso Doble de Especialidad" loading="lazy">
+              </div>
+              <div class="food-body">
+                <div class="food-title-row">
+                  <h3 class="food-title" data-i18n="c4_name">Espresso Doble Origen Único</h3>
+                  <span class="food-price">1,90 €</span>
+                </div>
+                <p class="food-desc" data-i18n="c4_desc">
+                  Extracción precisa a 9 bar en cafetera de palanca. Crema dorada atigrada, notas a jazmín y final dulce de caña de azúcar.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ESPACIO 2: BRUNCH & SALADOS -->
+      <section class="space-pane" id="pane-2" data-index="2">
+        <div class="pane-content">
+          <div class="pane-headline">
+            <span class="pane-eyebrow" data-i18n="brunch_eyebrow">03 / Brunch Salado</span>
+            <h2 class="pane-title" data-i18n="brunch_title">Brunch &amp; Salados</h2>
+            <p class="pane-subtitle" data-i18n="brunch_sub">
+              Huevos ecológicos de granja andaluza y toques salados que combinan a la perfección con nuestro café.
+            </p>
+          </div>
+
+          <div class="cards-flow">
+            <article class="food-card">
+              <div class="food-media">
+                <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=700&q=85" alt="Pancake Salado Bacon y Huevo Poché" loading="lazy">
+                <span class="food-tag-badge accent-badge">Signature</span>
+              </div>
+              <div class="food-body">
+                <div class="food-title-row">
+                  <h3 class="food-title" data-i18n="b1_name">Pancake Salado Bacon &amp; Huevo</h3>
+                  <span class="food-price">9,90 €</span>
+                </div>
+                <p class="food-desc" data-i18n="b1_desc">
+                  Dos pancakes esponjosos, bacon curado crujiente al manzano, huevo poché con yema líquida y sirope de arce infusionado con chili suave.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ESPACIO 3: BEBIDAS DE LA CASA -->
+      <section class="space-pane" id="pane-3" data-index="3">
+        <div class="pane-content">
+          <div class="pane-headline">
+            <span class="pane-eyebrow" data-i18n="drinks_eyebrow">04 / Tradición</span>
+            <h2 class="pane-title" data-i18n="drinks_title">Bebidas de la Casa</h2>
+            <p class="pane-subtitle" data-i18n="drinks_sub">
+              El alma caribeña y andaluza que da nombre a nuestro espacio en Granada.
+            </p>
+          </div>
+
+          <div class="cards-flow">
+            <article class="food-card">
+              <div class="food-media">
+                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=700&q=85" alt="Morisoñando Tradicional" loading="lazy">
+                <span class="food-tag-badge">La Leyenda</span>
+              </div>
+              <div class="food-body">
+                <div class="food-title-row">
+                  <h3 class="food-title" data-i18n="d1_name">Morisoñando Tradicional</h3>
+                  <span class="food-price">3,60 €</span>
+                </div>
+                <p class="food-desc" data-i18n="d1_desc">
+                  Zumo de naranja recién exprimido batido en frío con leche evaporada, vainilla pura de Madagascar y hielo picado. Pura felicidad en copa.
+                </p>
+              </div>
+            </article>
+
+            <article class="food-card">
+              <div class="food-media">
+                <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=700&q=85" alt="Té Matcha Latte Uji Orgánico" loading="lazy">
+              </div>
+              <div class="food-body">
+                <div class="food-title-row">
+                  <h3 class="food-title" data-i18n="d2_name">Matcha Latte Uji Orgánico</h3>
+                  <span class="food-price">3,50 €</span>
+                </div>
+                <p class="food-desc" data-i18n="d2_desc">
+                  Té verde matcha japonés de Kioto molido en piedra, batido con batidor de bambú chasen y leche emulsionada a 60°C.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ESPACIO 4: QUIÉNES SOMOS & UBICACIÓN -->
+      <section class="space-pane" id="pane-4" data-index="4">
+        <div class="pane-content">
+          <div class="about-hero-box">
+            <span class="pane-eyebrow" data-i18n="about_tag">Calle Moral de la Magdalena, 3</span>
+            <h2 class="about-title" data-i18n="about_title">Desayunar sin prisa en Granada.</h2>
+          </div>
+
+          <div class="about-card-clean">
+            <p class="about-body-text" data-i18n="about_p1">
+              Morí Soñando nació en el corazón de Granada con una idea simple: traer la alegría del auténtico brunch y los mejores pancakes esponjosos, fusionados con café de especialidad de micro-lotes andaluces.
+            </p>
+            <p class="about-body-text" data-i18n="about_p2">
+              Sin mezclas prefabricadas, sin prisas. La masa se bate a mano con harina ecológica cada mañana y cada taza se extrae con precisión.
+            </p>
+
+            <div class="details-grid">
+              <div class="detail-box">
+                <span class="detail-label" data-i18n="loc_address_title">Dirección</span>
+                <span class="detail-val">Calle Moral de la Magdalena, 3<br>18002 Granada, España</span>
+              </div>
+              <div class="detail-box">
+                <span class="detail-label" data-i18n="loc_hours_title">Horario</span>
+                <span class="detail-val">Lunes a Domingo<br><strong>09:00 — 16:30</strong></span>
+              </div>
+            </div>
+
             <a 
               href="https://www.google.com/maps/search/?api=1&query=Moriso%C3%B1ando+Granada+Calle+Moral+de+la+Magdalena+3" 
               target="_blank" 
               rel="noopener noreferrer" 
-              class="btn-write-review"
+              class="maps-cta-btn"
             >
-              <span>Escribir Reseña en Google</span>
+              <span>Abrir en Google Maps</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
             </a>
           </div>
 
-          <div class="reviews-cards">
-            <div class="review-box">
-              <div class="r-top">
-                <span class="r-author">Elena M.</span>
-                <span class="r-stars">★★★★★</span>
-              </div>
-              <p class="r-text">"Los mejores pancakes de todo Granada sin discusión. La textura es tan suave que parece nube. El café de especialidad está calibrado a la perfección."</p>
-            </div>
-            <div class="review-box">
-              <div class="r-top">
-                <span class="r-author">Pablo R.</span>
-                <span class="r-stars">★★★★★</span>
-              </div>
-              <p class="r-text">"Un sitio con personalidad propia en la Magdalena. La combinación de pancake salado con bacon y arce es una locura. El trato del equipo es de 10."</p>
-            </div>
-            <div class="review-box">
-              <div class="r-top">
-                <span class="r-author">Sara &amp; Tom</span>
-                <span class="r-stars">★★★★★</span>
-              </div>
-              <p class="r-text">"Best brunch in Andalusia. The Nutella stack and the cold brew coffee were incredible. Beautiful aesthetic and genuine warmth."</p>
-            </div>
+          <div class="reviews-spotlight">
+            <div class="spotlight-rating">4.9 ★★★★★</div>
+            <p class="spotlight-sub" data-i18n="reviews_count">Puntuación media en Google Maps (+340 opiniones de clientes)</p>
           </div>
         </div>
       </section>
 
-    </main>
-
-    <!-- 4. BANDEJA DE PEDIDO FLOTANTE (ORDER TRAY) -->
-    <div class="order-tray" id="orderTray">
-      <div class="tray-pill" id="trayPill">
-        <div class="tray-left">
-          <span class="tray-badge" id="trayCount">0</span>
-          <span class="tray-label" id="trayLabel" data-i18n="tray_empty">Tu selección</span>
-        </div>
-        <div class="tray-right">
-          <span class="tray-total" id="trayTotal">0,00 €</span>
-          <span class="tray-action-hint">Ver mesa ↑</span>
-        </div>
-      </div>
     </div>
-
-    <!-- MODAL INFERIOR DEL PEDIDO (BOTTOM SHEET) -->
-    <div class="order-sheet-overlay" id="orderSheetOverlay">
-      <div class="order-sheet" id="orderSheet">
-        <div class="sheet-drag-handle"></div>
-        <div class="sheet-header">
-          <h3 data-i18n="sheet_title">Tu Selección en Mesa</h3>
-          <button class="sheet-close" id="sheetCloseBtn">&times;</button>
-        </div>
-        <div class="sheet-items-list" id="sheetItemsList">
-          <p class="empty-tray-msg" data-i18n="tray_empty_msg">No has añadido productos aún. Pulsa en "+ Añadir" en cualquier pancake o café.</p>
-        </div>
-        <div class="sheet-footer">
-          <div class="sheet-total-row">
-            <span data-i18n="total_label">Total Estimado</span>
-            <span class="sheet-total-val" id="sheetTotalVal">0,00 €</span>
-          </div>
-          <button class="btn-confirm-order" id="btnConfirmOrder">
-            <span data-i18n="confirm_btn">Pedir al Camarero / Copiar</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 5. BARRA DE NAVEGACIÓN INFERIOR (TAB BAR TÁCTIL) -->
-    <nav class="bottom-tab-bar" aria-label="Navegación de la carta">
-      <button class="tab-item active" data-nav="viewMenu">
-        <span class="tab-icon">🥞</span>
-        <span class="tab-title" data-i18n="nav_menu">Carta</span>
-      </button>
-
-      <button class="tab-item" data-nav="viewAbout">
-        <span class="tab-icon">✨</span>
-        <span class="tab-title" data-i18n="nav_about">Nosotros</span>
-      </button>
-
-      <button class="tab-item" data-nav="viewReviews">
-        <span class="tab-icon">★</span>
-        <span class="tab-title" data-i18n="nav_reviews">Opiniones</span>
-      </button>
-
-      <a href="https://www.google.com/maps/search/?api=1&query=Moriso%C3%B1ando+Granada+Calle+Moral+de+la+Magdalena+3" target="_blank" rel="noopener noreferrer" class="tab-item">
-        <span class="tab-icon">📍</span>
-        <span class="tab-title" data-i18n="nav_map">Cómo Llegar</span>
-      </a>
-    </nav>
 
   </div>
-
-  <!-- TOAST FEEDBACK NOTIFICATIONS -->
-  <div class="toast-sink" id="toastSink"></div>
 
   <script src="script.js"></script>
 </body>
