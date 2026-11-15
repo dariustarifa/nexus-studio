@@ -1,450 +1,622 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="es" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Darius Bougerol — Design Engineer &amp; AI Systems</title>
-  <meta name="description" content="Portfolio of Darius Bougerol: design engineering, frontend architecture, and AI tool integration. Built with craft, restraint, and Emil Kowalski design principles.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Morí Soñando — Specialty Coffee &amp; Pancakes · Granada</title>
+  <meta name="description" content="Cafetería de especialidad y pancakes artesanales en Granada. Calle Moral de la Magdalena, 3. Brunch, café de finca y recetas hechas a mano a diario.">
 
-  <!-- Typography -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Tipografía exclusiva de Fontshare: Clash Display, General Sans & Cabinet Grotesk -->
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=general-sans@400,500,600&f[]=cabinet-grotesk@700,800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Header / Navigation -->
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="brand">
-        <a href="#overview" class="brand-link">
-          <span class="brand-glyph">⬡</span>
-          <span class="brand-name">darius.dev</span>
+
+  <!-- CONTENEDOR ENTORNO MÓVIL (MOBILE-FIRST) -->
+  <div class="mobile-viewport" id="appViewport">
+
+    <!-- 1. PANTALLA DE ENTRADA / VIDEO HERO EXPERIMENTAL -->
+    <section class="launch-screen" id="launchScreen">
+      <!-- Video / Loop cinematográfico de pancakes -->
+      <div class="video-container">
+        <div class="video-overlay"></div>
+        <!-- Iframe de video cinematográfico de Morisoñando -->
+        <iframe 
+          id="heroVideo"
+          class="bg-video-frame"
+          src="https://www.youtube-nocookie.com/embed/LtIbkp0vARo?autoplay=1&mute=1&controls=0&loop=1&playlist=LtIbkp0vARo&playsinline=1&rel=0&modestbranding=1" 
+          title="Morí Soñando — Vídeo promocional de pancakes y café" 
+          allow="autoplay; encrypted-media"
+          loading="eager">
+        </iframe>
+        <!-- Fallback fotográfico de alta resolución con profundidad -->
+        <div class="video-backup-poster" style="background-image: url('https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=1000&q=85');"></div>
+      </div>
+
+      <div class="launch-content">
+        <div class="launch-badge">
+          <span class="badge-dot"></span>
+          <span>Calle Moral de la Magdalena, 3 · Granada</span>
+        </div>
+
+        <div class="launch-logo-wrap">
+          <img src="logo-opt.png" alt="Morí Soñando Granada" class="launch-logo">
+        </div>
+
+        <h1 class="launch-title">
+          Pancakes recién horneados, sirope de arce puro y café de finca tostado a mano.
+        </h1>
+
+        <button class="btn-enter" id="btnEnter">
+          <span class="btn-enter-text">Ver Carta y Menú</span>
+          <span class="btn-enter-arrow">↓</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 2. BARRA SUPERIOR FIJA (HEADER) -->
+    <header class="app-header" id="appHeader">
+      <div class="header-left">
+        <a href="#inicio" class="logo-anchor" id="logoToTop">
+          <img src="logo-opt.png" alt="Morí Soñando" class="header-logo">
         </a>
-        <span class="status-pill">
-          <span class="status-dot"></span>
-          <span>Granada, ES · Available</span>
-        </span>
       </div>
 
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#work" class="nav-link">Work</a>
-        <a href="#lab" class="nav-link">Interactive Lab</a>
-        <a href="#standards" class="nav-link">Craft Standards</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </nav>
-
-      <div class="header-actions">
-        <button id="cmdTrigger" class="cmd-btn" aria-label="Open Command Menu (⌘K)">
-          <span>Search</span>
-          <kbd class="kbd">⌘K</kbd>
+      <div class="header-right">
+        <!-- Selector de idioma ES / EN sin recarga -->
+        <button class="lang-switch" id="langSwitch" aria-label="Cambiar idioma a inglés">
+          <span class="lang-opt active" data-lang="es">ES</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-opt" data-lang="en">EN</span>
         </button>
 
-        <button id="themeToggle" class="icon-toggle" aria-label="Toggle theme">
-          <svg class="sun-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"></circle>
-            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+        <!-- Botón de Reseñas de Google Oficial -->
+        <a 
+          href="https://www.google.com/maps/search/?api=1&query=Moriso%C3%B1ando+Granada+Calle+Moral+de+la+Magdalena+3" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="review-pill"
+          title="Ver o dejar reseña en Google Maps"
+        >
+          <svg class="google-icon" width="14" height="14" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.35 24 12 24Z"/>
+            <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.14-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15Z"/>
+            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98Z"/>
           </svg>
-          <svg class="moon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
+          <span class="review-stars">★ 4.9</span>
+          <span class="review-label" data-i18n="reviews">Reseñas</span>
+        </a>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <!-- HERO SECTION -->
-    <section id="overview" class="hero-section">
-      <div class="container hero-container">
-        <div class="hero-intro">
-          <p class="section-kicker">Design Engineering &amp; AI Integration</p>
-          <h1 class="hero-title">
-            Tactile web interfaces powered by <span class="accent-text">autonomous AI systems</span>.
-          </h1>
-          <p class="hero-bio">
-            I’m Darius Bougerol. I build high-performance web products, generative AI pipelines, and responsive interfaces with strict adherence to design engineering principles: sub-frame response, tactile feedback, and purposeful typography.
-          </p>
+    <!-- 3. CUERPO DE LA APP / VISTAS -->
+    <main class="app-main">
 
-          <div class="hero-actions">
-            <a href="#work" class="btn btn-primary">
-              <span>View Selected Work</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-            <button class="btn btn-secondary" id="triggerHeroToast">
-              <span>Spawn Sonner Toast</span>
-              <kbd class="kbd">T</kbd>
+      <!-- PESTAÑA: CARTA / MENÚ -->
+      <section class="view-section active" id="viewMenu">
+        
+        <!-- Píldoras de categoría -->
+        <div class="menu-tabs-wrapper">
+          <div class="menu-tabs" role="tablist">
+            <button class="menu-tab active" data-cat="pancakes" role="tab">
+              <span class="cat-icon">🥞</span>
+              <span data-i18n="cat_pancakes">Pancakes</span>
+            </button>
+            <button class="menu-tab" data-cat="coffee" role="tab">
+              <span class="cat-icon">☕</span>
+              <span data-i18n="cat_coffee">Café de Finca</span>
+            </button>
+            <button class="menu-tab" data-cat="brunch" role="tab">
+              <span class="cat-icon">🥪</span>
+              <span data-i18n="cat_brunch">Brunch &amp; Salados</span>
+            </button>
+            <button class="menu-tab" data-cat="drinks" role="tab">
+              <span class="cat-icon">🍹</span>
+              <span data-i18n="cat_drinks">Bebidas</span>
             </button>
           </div>
         </div>
 
-        <!-- Interactive Terminal / Spring Sandbox -->
-        <div class="hero-widget">
-          <div class="widget-header">
-            <div class="terminal-dots">
-              <span class="t-dot"></span>
-              <span class="t-dot"></span>
-              <span class="t-dot"></span>
-            </div>
-            <span class="widget-title">spring-physics.config.ts</span>
-            <span class="widget-badge">Interactive</span>
-          </div>
+        <!-- Lista de productos -->
+        <div class="items-stream" id="itemsStream">
 
-          <div class="widget-body">
-            <!-- Sliding segment control -->
-            <div class="segment-track" id="heroSegmentTrack" role="tablist">
-              <div class="segment-thumb" id="segmentThumb"></div>
-              <button class="segment-tab active" data-index="0" role="tab" aria-selected="true">Tactile</button>
-              <button class="segment-tab" data-index="1" role="tab" aria-selected="false">Snappy</button>
-              <button class="segment-tab" data-index="2" role="tab" aria-selected="false">Instant</button>
+          <!-- PANCAKES -->
+          <div class="category-block" data-section="pancakes">
+            <div class="category-header">
+              <h2 class="category-title" data-i18n="pancakes_title">Pancakes de Autor</h2>
+              <p class="category-subtitle" data-i18n="pancakes_sub">
+                Masa batida a mano cada mañana. Servidos calientes en torres de 3 pisos esponjosos.
+              </p>
             </div>
 
-            <!-- Interactive physics tester -->
-            <div class="physics-stage">
-              <div class="physics-box" id="physicsTarget">
-                <span class="physics-label">Press &amp; Hold</span>
-                <span class="physics-sub" id="physicsStatus">scale(0.97) on :active</span>
-              </div>
-            </div>
+            <div class="cards-list">
+              <!-- Item 1: Nutella & Avellana -->
+              <article class="food-card" data-item-id="nutella-stack">
+                <div class="food-img-frame">
+                  <img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=700&q=85" alt="Pancake Nutella y Avellana" loading="lazy">
+                  <span class="food-badge">Top Seller</span>
+                </div>
+                <div class="food-details">
+                  <div class="food-headline">
+                    <h3 class="food-name" data-i18n="pancake1_name">Nutella &amp; Avellana Tostada</h3>
+                    <span class="food-price">8,90 €</span>
+                  </div>
+                  <p class="food-desc" data-i18n="pancake1_desc">
+                    Tres pancakes suflé, ganache templada de Nutella artesanal, avellanas garrapiñadas de la comarca, plátano flameado y cacao puro.
+                  </p>
+                  <div class="food-action-row">
+                    <span class="food-tag">Casero</span>
+                    <button class="btn-add-item" data-name="Nutella &amp; Avellana" data-price="8.90">
+                      <span>+ Añadir</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
 
-            <!-- Live parameters read-out -->
-            <div class="parameters-grid">
-              <div class="param-item">
-                <span class="param-key">Stiffness</span>
-                <span class="param-val" id="valStiffness">420</span>
-              </div>
-              <div class="param-item">
-                <span class="param-key">Damping</span>
-                <span class="param-val" id="valDamping">28</span>
-              </div>
-              <div class="param-item">
-                <span class="param-key">Mass</span>
-                <span class="param-val" id="valMass">0.85</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+              <!-- Item 2: Matcha & Chocolate Blanco -->
+              <article class="food-card" data-item-id="matcha-stack">
+                <div class="food-img-frame">
+                  <img src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=700&q=85" alt="Pancakes de Matcha Uji" loading="lazy">
+                  <span class="food-badge specialty">Matcha Uji</span>
+                </div>
+                <div class="food-details">
+                  <div class="food-headline">
+                    <h3 class="food-name" data-i18n="pancake2_name">Matcha Ceremonial &amp; Choco Blanco</h3>
+                    <span class="food-price">9,50 €</span>
+                  </div>
+                  <p class="food-desc" data-i18n="pancake2_desc">
+                    Infusión de té matcha japonés grado ceremonial en la masa, baño de chocolate blanco templado, frambuesas ácidas y ralladura de lima.
+                  </p>
+                  <div class="food-action-row">
+                    <span class="food-tag">Exclusivo</span>
+                    <button class="btn-add-item" data-name="Matcha Ceremonial" data-price="9.50">
+                      <span>+ Añadir</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
 
-    <!-- SECTION 1: SELECTED WORK -->
-    <section id="work" class="section">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-kicker">01 / Portfolio</p>
-          <h2 class="section-title">Selected Systems &amp; Interfaces</h2>
-          <p class="section-lead">
-            Every project demonstrates functional craft: zero layout shift, real user workflows, and high-performance rendering.
-          </p>
-        </div>
+              <!-- Item 3: Caramelo Salado & Pecanas -->
+              <article class="food-card" data-item-id="caramel-stack">
+                <div class="food-img-frame">
+                  <img src="https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b7?auto=format&fit=crop&w=700&q=85" alt="Pancakes de Caramelo Salado" loading="lazy">
+                </div>
+                <div class="food-details">
+                  <div class="food-headline">
+                    <h3 class="food-name" data-i18n="pancake3_name">Caramelo Salado &amp; Nuez Pecana</h3>
+                    <span class="food-price">8,50 €</span>
+                  </div>
+                  <p class="food-desc" data-i18n="pancake3_desc">
+                    Toffee casero con mantequilla de pasto y sal marina virgen, nueces pecanas tostadas al romero y quenelle de mantequilla batida.
+                  </p>
+                  <div class="food-action-row">
+                    <span class="food-tag">Favorito</span>
+                    <button class="btn-add-item" data-name="Caramelo Salado &amp; Pecana" data-price="8.50">
+                      <span>+ Añadir</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
 
-        <div class="work-grid">
-          <!-- Work 1: Photography & Cinema 3D Portfolio -->
-          <article class="work-card">
-            <div class="work-header">
-              <span class="work-index">01</span>
-              <div class="work-tags">
-                <span class="tag">GSAP 3D</span>
-                <span class="tag">Lenis Scroll</span>
-                <span class="tag">React 19</span>
-              </div>
-            </div>
-            <h3 class="work-title">D·B Cinema &amp; Photography Portfolio</h3>
-            <p class="work-desc">
-              High-end audiovisual portfolio for film and photography in Granada. Features a 360° circular 3D carousel with inertia snap, StackViewer gallery with infinite scroll, and responsive WebP srcset pipeline.
-            </p>
-            <div class="work-meta">
-              <a href="http://localhost:5173" target="_blank" rel="noopener noreferrer" class="work-link">
-                <span>Inspect Local Build (Port 5173)</span>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
-              </a>
-            </div>
-          </article>
+              <!-- Item 4: Frutos Rojos & Ricotta -->
+              <article class="food-card" data-item-id="berries-stack">
+                <div class="food-img-frame">
+                  <img src="https://images.unsplash.com/photo-1575853121743-60c24f0a7502?auto=format&fit=crop&w=700&q=85" alt="Pancakes Frutos Rojos Silvestres" loading="lazy">
+                </div>
+                <div class="food-details">
+                  <div class="food-headline">
+                    <h3 class="food-name" data-i18n="pancake4_name">Frutos Silvestres &amp; Ricotta Limón</h3>
+                    <span class="food-price">8,20 €</span>
+                  </div>
+                  <p class="food-desc" data-i18n="pancake4_desc">
+                    Compota artesana de arándanos y moras reducida a fuego lento, crema fresca de ricotta con limón de la Vega y sirope de arce Grado A.
+                  </p>
+                  <div class="food-action-row">
+                    <span class="food-tag">Fresco</span>
+                    <button class="btn-add-item" data-name="Frutos Silvestres &amp; Ricotta" data-price="8.20">
+                      <span>+ Añadir</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
 
-          <!-- Work 2: Sonner Notification Engine -->
-          <article class="work-card">
-            <div class="work-header">
-              <span class="work-index">02</span>
-              <div class="work-tags">
-                <span class="tag">Micro-Interactions</span>
-                <span class="tag">Emil Kowalski Spec</span>
-                <span class="tag">Zero Jank</span>
-              </div>
-            </div>
-            <h3 class="work-title">Sonner-Style Stacked Toast System</h3>
-            <p class="work-desc">
-              Physical card-stack notification architecture. Toasts rest in 3D perspective, expand fluidly on hover, and dismiss without displacing page flow or causing GPU layout thrashing.
-            </p>
-            <div class="work-meta">
-              <button class="work-link-btn" id="demoToastAction">
-                <span>Trigger Live Demo</span>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </article>
-
-          <!-- Work 3: Agentic AI Workflow Engine -->
-          <article class="work-card">
-            <div class="work-header">
-              <span class="work-index">03</span>
-              <div class="work-tags">
-                <span class="tag">LLM Tools</span>
-                <span class="tag">GitHub CLI</span>
-                <span class="tag">Automated CI</span>
-              </div>
-            </div>
-            <h3 class="work-title">Agentic Workflow &amp; Code Deployment</h3>
-            <p class="work-desc">
-              End-to-end tooling connecting natural language prompts to verified terminal tasks, GitHub repository automation, and automated branch staging with strict sandboxing.
-            </p>
-            <div class="work-meta">
-              <a href="https://github.com/dariustarifa/nexus-studio" target="_blank" rel="noopener noreferrer" class="work-link">
-                <span>View GitHub Repository</span>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
-              </a>
-            </div>
-          </article>
-
-          <!-- Work 4: Synthetic Audio Micro-Interactions -->
-          <article class="work-card">
-            <div class="work-header">
-              <span class="work-index">04</span>
-              <div class="work-tags">
-                <span class="tag">Web Audio API</span>
-                <span class="tag">Zero Dependencies</span>
-                <span class="tag">Haptic Sound</span>
-              </div>
-            </div>
-            <h3 class="work-title">Subtle Audio Feedback Architecture</h3>
-            <p class="work-desc">
-              Zero-asset synthetic haptic audio generator using the native Web Audio API oscillator. Provides immediate, tactile click validation below 10ms latency without downloading MP3 files.
-            </p>
-            <div class="work-meta">
-              <button class="work-link-btn" id="audioToggleDemo">
-                <span id="audioStatusSpan">Audio Feedback: Off</span>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/></svg>
-              </button>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 2: INTERACTIVE LAB -->
-    <section id="lab" class="section">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-kicker">02 / Interactive Lab</p>
-          <h2 class="section-title">Micro-Interactions Without Slop</h2>
-          <p class="section-lead">
-            Test the physical response of UI components built under Emil Kowalski's rules.
-          </p>
-        </div>
-
-        <div class="lab-grid">
-          <!-- Lab Item 1: Tactile Compression -->
-          <div class="lab-card">
-            <span class="lab-badge">Rule: Scale 0.97 on :active</span>
-            <h4 class="lab-title">Button State Mechanics</h4>
-            <p class="lab-text">
-              Press and release each button. Notice the immediate 60ms compression that confirms user intent before the action executes.
-            </p>
-            <div class="lab-demo">
-              <button class="btn btn-primary" id="labPrimaryBtn">Primary Action</button>
-              <button class="btn btn-secondary" id="labSecondaryBtn">Secondary</button>
-              <button class="btn btn-ghost" id="labGhostBtn">Ghost</button>
+              <!-- Item 5: Clásico Americano Fluffy -->
+              <article class="food-card" data-item-id="classic-stack">
+                <div class="food-img-frame">
+                  <img src="https://images.unsplash.com/photo-1598214886806-c87b84b7078b?auto=format&fit=crop&w=700&q=85" alt="Pancake Clásico Americano" loading="lazy">
+                </div>
+                <div class="food-details">
+                  <div class="food-headline">
+                    <h3 class="food-name" data-i18n="pancake5_name">El Clásico Americano Fluffy</h3>
+                    <span class="food-price">7,20 €</span>
+                  </div>
+                  <p class="food-desc" data-i18n="pancake5_desc">
+                    La receta original. Tres pisos dorados con dados de mantequilla artesana fundente, jarrita de sirope de arce canadiense puro 100% y escamas de sal.
+                  </p>
+                  <div class="food-action-row">
+                    <span class="food-tag">Tradición</span>
+                    <button class="btn-add-item" data-name="Clásico Americano" data-price="7.20">
+                      <span>+ Añadir</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
 
-          <!-- Lab Item 2: Zero-Jitter Tabular Counter -->
-          <div class="lab-card">
-            <span class="lab-badge">Rule: font-variant-numeric: tabular-nums</span>
-            <h4 class="lab-title">Zero-Jitter Number Updates</h4>
-            <p class="lab-text">
-              When numbers change, standard proportional fonts shift neighboring characters. Tabular numerals ensure absolute stability.
-            </p>
-            <div class="lab-demo">
-              <div class="counter-cluster">
-                <button class="counter-step" id="labCountDec">−</button>
-                <span class="counter-display" id="labCounterVal">1,024</span>
-                <button class="counter-step" id="labCountInc">+</button>
-              </div>
+          <!-- CAFÉ DE ESPECIALIDAD -->
+          <div class="category-block" data-section="coffee">
+            <div class="category-header">
+              <h2 class="category-title" data-i18n="coffee_title">Café de Especialidad</h2>
+              <p class="category-subtitle" data-i18n="coffee_sub">
+                Granos de origen ético, tueste medio y leche fresca de granja ecológica andaluza (opción vegetal sin coste).
+              </p>
+            </div>
+
+            <div class="cards-list">
+              <!-- Coffee 1: Flat White -->
+              <article class="food-card" data-item-id="flat-white">
+                <div class="food-img-frame">
+                  <img src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=700&q=85" alt="Flat White Café" loading="lazy">
+                </div>
+                <div class="food-details">
+                  <div class="food-headline">
+                    <h3 class="food-name" data-i18n="coffee1_name">Flat White</h3>
+                    <span class="food-price">2,40 €</span>
+                  </div>
+                  <p class="food-desc" data-i18n="coffee1_desc">
+                    Doble shot de espresso de finca con leche emulsionada en micro-espuma sedosa a 62°C. Notas a toffee y avellana.
+                  </p>
+                  <div class="food-action-row">
+                    <span class="food-tag">Micro-Lote</span>
+                    <button class="btn-add-item" data-name="Flat White" data-price="2.40">
+                      <span>+ Añadir</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Coffee 2: Cold Brew 18h -->
+              <article class="food-card" data-item-id="cold-brew">
+                <div class="food-img-frame">
+                  <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=700&q=85" alt="Cold Brew de Maceración 18h" loading="lazy">
+                  <span class="food-badge">18 Horas</span>
+                </div>
+                <div class="food-details">
+                  <div class="food-headline">
+                    <h3 class="food-name" data-i18n="coffee2_name">Cold Brew Infusión 18h</h3>
+                    <span class="food-price">3,20 €</span>
+                  </div>
+                  <p class="food-desc" data-i18n="coffee2_desc">
+                    Extracción en frío gota a gota durante 18 horas. Cuerpo aterciopelado, acidez vinosa baja y notas a cacao y piel de naranja. Servido sobre roca de hielo.
+                  </p>
+                  <div class="food-action-row">
+                    <span class="food-tag">Refrescante</span>
+                    <button class="btn-add-item" data-name="Cold Brew 18h" data-price="3.20">
+                      <span>+ Añadir</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Coffee 3: Iced Pistachio Latte -->
+              <article class="food-card" data-item-id="pistachio-latte">
+                <div class="food-img-frame">
+                  <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=700&q=85" alt="Iced Pistachio Latte" loading="lazy">
+                </div>
+                <div class="food-details">
+                  <div class="food-headline">
+                    <h3 class="food-name" data-i18n="coffee3_name">Iced Pistachio Latte</h3>
+                    <span class="food-price">3,80 €</span>
+                  </div>
+                  <p class="food-desc" data-i18n="coffee3_desc">
+                    Espresso doble de origen etíope sobre leche de avena bio, crema pura de pistacho de Sicilia y escamas crujientes de pistacho tostado.
+                  </p>
+                  <div class="food-action-row">
+                    <span class="food-tag">Signature</span>
+                    <button class="btn-add-item" data-name="Iced Pistachio Latte" data-price="3.80">
+                      <span>+ Añadir</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Coffee 4: Espresso Doble -->
+              <article class="food-card" data-item-id="espresso-doble">
+                <div class="food-img-frame">
+                  <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=700&q=85" alt="Espresso Doble de Especialidad" loading="lazy">
+                </div>
+                <div class="food-details">
+                  <div class="food-headline">
+                    <h3 class="food-name" data-i18n="coffee4_name">Espresso Doble Origen Único</h3>
+                    <span class="food-price">1,90 €</span>
+                  </div>
+                  <p class="food-desc" data-i18n="coffee4_desc">
+                    Extracción precisa a 9 bar en cafetera de palanca. Crema dorada atigrada, notas a jazmín y final dulce de caña de azúcar.
+                  </p>
+                  <div class="food-action-row">
+                    <span class="food-tag">Puro</span>
+                    <button class="btn-add-item" data-name="Espresso Doble" data-price="1.90">
+                      <span>+ Añadir</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
 
-          <!-- Lab Item 3: Inline Morphing Copy -->
-          <div class="lab-card">
-            <span class="lab-badge">Rule: State Confirmation</span>
-            <h4 class="lab-title">Instant Clipboard Feedback</h4>
-            <p class="lab-text">
-              Single-click copy affordance with smooth SVG morphing from clipboard icon to checkmark.
+          <!-- BRUNCH & SALADOS -->
+          <div class="category-block" data-section="brunch">
+            <div class="category-header">
+              <h2 class="category-title" data-i18n="brunch_title">Brunch &amp; Salados</h2>
+              <p class="category-subtitle" data-i18n="brunch_sub">
+                Huevos de granja ecológica local y pan brioche artesano de masa madre.
+              </p>
+            </div>
+
+            <div class="cards-list">
+              <!-- Brunch 1: Pancake Salado Bacon & Huevo -->
+              <article class="food-card" data-item-id="savory-bacon-pancake">
+                <div class="food-img-frame">
+                  <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=700&q=85" alt="Pancake Salado Bacon y Huevo" loading="lazy">
+                  <span class="food-badge">Brunch Épico</span>
+                </div>
+                <div class="food-details">
+                  <div class="food-headline">
+                    <h3 class="food-name" data-i18n="brunch1_name">Pancake Salado Bacon &amp; Huevo</h3>
+                    <span class="food-price">9,90 €</span>
+                  </div>
+                  <p class="food-desc" data-i18n="brunch1_desc">
+                    Dos pancakes esponjosos, bacon curado crujiente, huevo poché con yema líquida y baño de sirope de arce infusionado con chili suave.
+                  </p>
+                  <div class="food-action-row">
+                    <span class="food-tag">Salado</span>
+                    <button class="btn-add-item" data-name="Pancake Bacon &amp; Huevo" data-price="9.90">
+                      <span>+ Añadir</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- BEBIDAS & MORISOÑANDO ICÓNICO -->
+          <div class="category-block" data-section="drinks">
+            <div class="category-header">
+              <h2 class="category-title" data-i18n="drinks_title">Bebidas de la Casa</h2>
+              <p class="category-subtitle" data-i18n="drinks_sub">
+                El alma caribeña y andaluza que da nombre a nuestro espacio.
+              </p>
+            </div>
+
+            <div class="cards-list">
+              <!-- Drink 1: Morisoñando Tradicional -->
+              <article class="food-card" data-item-id="morisonando-drink">
+                <div class="food-img-frame">
+                  <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=700&q=85" alt="Bebida Morisoñando Tradicional" loading="lazy">
+                  <span class="food-badge specialty">La Leyenda</span>
+                </div>
+                <div class="food-details">
+                  <div class="food-headline">
+                    <h3 class="food-name" data-i18n="drink1_name">Morisoñando Tradicional</h3>
+                    <span class="food-price">3,60 €</span>
+                  </div>
+                  <p class="food-desc" data-i18n="drink1_desc">
+                    Zumo de naranja valenciana recién exprimido batido en frío con leche evaporada, vainilla pura de Madagascar y hielo picado. La bebida que te hace soñar despierto.
+                  </p>
+                  <div class="food-action-row">
+                    <span class="food-tag">Inolvidable</span>
+                    <button class="btn-add-item" data-name="Morisoñando Tradicional" data-price="3.60">
+                      <span>+ Añadir</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Drink 2: Matcha Latte Uji -->
+              <article class="food-card" data-item-id="matcha-latte">
+                <div class="food-img-frame">
+                  <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=700&q=85" alt="Té Matcha Latte" loading="lazy">
+                </div>
+                <div class="food-details">
+                  <div class="food-headline">
+                    <h3 class="food-name" data-i18n="drink2_name">Matcha Latte Uji Orgánico</h3>
+                    <span class="food-price">3,50 €</span>
+                  </div>
+                  <p class="food-desc" data-i18n="drink2_desc">
+                    Té verde matcha japonés molido en piedra en Kioto, batido artesanalmente con batidor de bambú chasen y leche emulsionada.
+                  </p>
+                  <div class="food-action-row">
+                    <span class="food-tag">Antioxidante</span>
+                    <button class="btn-add-item" data-name="Matcha Latte Uji" data-price="3.50">
+                      <span>+ Añadir</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PESTAÑA: QUIÉNES SOMOS (HISTORIA & ESPACIO) -->
+      <section class="view-section" id="viewAbout" hidden>
+        <div class="about-hero">
+          <div class="about-hero-img" style="background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=85');"></div>
+          <div class="about-hero-overlay"></div>
+          <div class="about-hero-text">
+            <span class="about-kicker" data-i18n="about_kicker">Granada · Moral de la Magdalena</span>
+            <h2 class="about-title" data-i18n="about_title">Un refugio para desayunar sin prisas.</h2>
+          </div>
+        </div>
+
+        <div class="about-body">
+          <div class="about-story">
+            <p class="story-lead" data-i18n="story_p1">
+              Morí Soñando nació en el corazón de Granada con una obsesión sencilla: traer la alegría del auténtico brunch y los mejores pancakes esponjosos, fusionados con café de especialidad de micro-lotes andaluces.
             </p>
-            <div class="lab-demo">
-              <div class="code-copy-affordance" id="codeAffordance">
-                <code>npx create-craft-app</code>
-                <button class="copy-trigger" id="copyTriggerBtn" aria-label="Copy snippet">
-                  <svg class="icon-clipboard" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                  </svg>
-                  <svg class="icon-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </button>
-              </div>
+            <p data-i18n="story_p2">
+              Nuestro nombre rinde homenaje a la mítica bebida dominicana "Morir Soñando": ese momento exacto en el que pruebas algo tan rico que te transporta. En Calle Moral de la Magdalena 3 no usamos mezclas prefabricadas. La masa de los pancakes se bate a mano con harina ecológica cada mañana, las compotas se reducen a fuego lento y cada taza de café se extrae con gramaje y temperatura calibrados.
+            </p>
+          </div>
+
+          <!-- Puntos clave del manifiesto -->
+          <div class="manifesto-grid">
+            <div class="manifesto-card">
+              <span class="m-icon">🥞</span>
+              <h4 data-i18n="m1_title">Pancakes Suflé</h4>
+              <p data-i18n="m1_desc">Aireados, esponjosos y cocinados a la plancha en el momento. Nunca recalentados.</p>
+            </div>
+            <div class="manifesto-card">
+              <span class="m-icon">☕</span>
+              <h4 data-i18n="m2_title">Café Ético</h4>
+              <p data-i18n="m2_desc">100% Arábica de especialidad trazable desde la finca hasta tu taza.</p>
+            </div>
+            <div class="manifesto-card">
+              <span class="m-icon">🌿</span>
+              <h4 data-i18n="m3_title">Ingredientes Reales</h4>
+              <p data-i18n="m3_desc">Huevos camperos, fruta fresca del día y sirope de arce canadiense puro.</p>
+            </div>
+          </div>
+
+          <!-- GRAN CTA PARA VOLVER A LA CARTA -->
+          <div class="about-cta-box">
+            <h3 data-i18n="cta_heading">¿Listo para probar los mejores pancakes de Granada?</h3>
+            <p data-i18n="cta_sub">Explora nuestra carta completa y elige tu mesa.</p>
+            <button class="btn-giant-cta" id="btnGoToMenu">
+              <span data-i18n="cta_btn">Ver la Carta Completa</span>
+              <span class="arrow-right">→</span>
+            </button>
+          </div>
+
+          <!-- Información práctica del local -->
+          <div class="info-strip">
+            <div class="info-item">
+              <span class="info-label" data-i18n="address_label">Dirección</span>
+              <span class="info-val">Calle Moral de la Magdalena, 3<br>18002 Granada, España</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label" data-i18n="hours_label">Horario de Cocina</span>
+              <span class="info-val">Lunes a Domingo<br><strong>09:00 — 16:30</strong></span>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- SECTION 3: CRAFT STANDARDS (AUDIT) -->
-    <section id="standards" class="section">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-kicker">03 / Engineering Philosophy</p>
-          <h2 class="section-title">The Anti-Slop Code Standards</h2>
-          <p class="section-lead">
-            Real software design is defined by what you choose <em>not</em> to do.
-          </p>
-        </div>
-
-        <div class="standards-table-wrapper">
-          <table class="standards-table">
-            <thead>
-              <tr>
-                <th style="width: 25%;">Anti-Pattern (AI Slop)</th>
-                <th style="width: 35%;">Craft Standard</th>
-                <th style="width: 40%;">Reasoning</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>transition: all 300ms</code></td>
-                <td><code>transition: transform 150ms var(--ease-out), opacity 150ms linear</code></td>
-                <td>Specifying properties prevents unexpected jank on layout redraws and color shifts.</td>
-              </tr>
-              <tr>
-                <td><code>transform: scale(0)</code></td>
-                <td><code>transform: scale(0.96); opacity: 0</code></td>
-                <td>Nothing appears from a zero-dimension void; subtle scales maintain spatial orientation.</td>
-              </tr>
-              <tr>
-                <td>Slow command palette open</td>
-                <td>Instant Raycast-style opening</td>
-                <td>Keyboard-initiated actions repeat 100+ times/day. Zero animation keeps muscle memory fluid.</td>
-              </tr>
-              <tr>
-                <td>Generic purple-cyan gradient blobs</td>
-                <td>Disciplined obsidian neutrals &amp; precise 1px borders</td>
-                <td>Cosmetic glow effects distract from typographic clarity and core product utility.</td>
-              </tr>
-              <tr>
-                <td>Fake marketing statistics strips</td>
-                <td>Verified facts and functional code</td>
-                <td>Generic strips ("99.8% satisfaction") are the definitive copy tell of synthetic templates.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 4: CONTACT -->
-    <section id="contact" class="section">
-      <div class="container contact-container">
-        <div class="contact-box">
-          <p class="section-kicker">04 / Connect</p>
-          <h2 class="contact-title">Let’s build something deliberate.</h2>
-          <p class="contact-lead">
-            Available for select frontend engineering contracts, design system architecture, and AI tool integration.
-          </p>
-
-          <div class="contact-methods">
-            <a href="mailto:dariusbougerol@gmail.com" class="contact-card">
-              <span class="contact-label">Email</span>
-              <span class="contact-val">dariusbougerol@gmail.com</span>
+      <!-- PESTAÑA: OPINIONES / GOOGLE REVIEWS -->
+      <section class="view-section" id="viewReviews" hidden>
+        <div class="reviews-wrapper">
+          <div class="reviews-header">
+            <div class="rating-huge">4.9</div>
+            <div class="rating-stars">★★★★★</div>
+            <p class="rating-count" data-i18n="reviews_count">Puntuación media en Google Maps (+340 opiniones)</p>
+            <a 
+              href="https://www.google.com/maps/search/?api=1&query=Moriso%C3%B1ando+Granada+Calle+Moral+de+la+Magdalena+3" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="btn-write-review"
+            >
+              <span>Escribir Reseña en Google</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
             </a>
-            <a href="https://wa.me/34615538455?text=Hello%20Darius,%20let's%20work%20together." target="_blank" rel="noopener noreferrer" class="contact-card">
-              <span class="contact-label">WhatsApp</span>
-              <span class="contact-val">+34 615 538 455</span>
-            </a>
-            <a href="https://github.com/dariustarifa" target="_blank" rel="noopener noreferrer" class="contact-card">
-              <span class="contact-label">GitHub</span>
-              <span class="contact-val">github.com/dariustarifa</span>
-            </a>
+          </div>
+
+          <div class="reviews-cards">
+            <div class="review-box">
+              <div class="r-top">
+                <span class="r-author">Elena M.</span>
+                <span class="r-stars">★★★★★</span>
+              </div>
+              <p class="r-text">"Los mejores pancakes de todo Granada sin discusión. La textura es tan suave que parece nube. El café de especialidad está calibrado a la perfección."</p>
+            </div>
+            <div class="review-box">
+              <div class="r-top">
+                <span class="r-author">Pablo R.</span>
+                <span class="r-stars">★★★★★</span>
+              </div>
+              <p class="r-text">"Un sitio con personalidad propia en la Magdalena. La combinación de pancake salado con bacon y arce es una locura. El trato del equipo es de 10."</p>
+            </div>
+            <div class="review-box">
+              <div class="r-top">
+                <span class="r-author">Sara &amp; Tom</span>
+                <span class="r-stars">★★★★★</span>
+              </div>
+              <p class="r-text">"Best brunch in Andalusia. The Nutella stack and the cold brew coffee were incredible. Beautiful aesthetic and genuine warmth."</p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container footer-content">
-      <div class="footer-left">
-        <span class="footer-copy">© 2026 Darius Bougerol. All rights reserved.</span>
-        <span class="footer-sub">Crafted with taste-skill 2.5 &amp; Emil Kowalski design engineering principles.</span>
-      </div>
-      <div class="footer-right">
-        <a href="https://github.com/dariustarifa/nexus-studio" target="_blank" rel="noopener noreferrer" class="footer-link">Source Code</a>
-        <span class="footer-sep">·</span>
-        <a href="#overview" class="footer-link">Top ↑</a>
+    </main>
+
+    <!-- 4. BANDEJA DE PEDIDO FLOTANTE (ORDER TRAY) -->
+    <div class="order-tray" id="orderTray">
+      <div class="tray-pill" id="trayPill">
+        <div class="tray-left">
+          <span class="tray-badge" id="trayCount">0</span>
+          <span class="tray-label" id="trayLabel" data-i18n="tray_empty">Tu selección</span>
+        </div>
+        <div class="tray-right">
+          <span class="tray-total" id="trayTotal">0,00 €</span>
+          <span class="tray-action-hint">Ver mesa ↑</span>
+        </div>
       </div>
     </div>
-  </footer>
 
-  <!-- SONNER TOAST STACK -->
-  <div id="sonnerRoot" class="sonner-root" aria-live="polite"></div>
-
-  <!-- COMMAND PALETTE (INSTANT) -->
-  <div id="cmdPalette" class="cmd-palette" aria-hidden="true">
-    <div class="cmd-dialog">
-      <div class="cmd-bar">
-        <svg class="cmd-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <input type="text" id="cmdSearchInput" placeholder="Type a destination or action..." autocomplete="off">
-        <kbd class="kbd">ESC</kbd>
-      </div>
-
-      <div class="cmd-options" id="cmdOptions">
-        <div class="cmd-group">Sections</div>
-        <div class="cmd-item" data-goto="#work">
-          <span>01 / Selected Systems &amp; Interfaces</span>
-          <span class="cmd-tag">Jump</span>
+    <!-- MODAL INFERIOR DEL PEDIDO (BOTTOM SHEET) -->
+    <div class="order-sheet-overlay" id="orderSheetOverlay">
+      <div class="order-sheet" id="orderSheet">
+        <div class="sheet-drag-handle"></div>
+        <div class="sheet-header">
+          <h3 data-i18n="sheet_title">Tu Selección en Mesa</h3>
+          <button class="sheet-close" id="sheetCloseBtn">&times;</button>
         </div>
-        <div class="cmd-item" data-goto="#lab">
-          <span>02 / Interactive Component Lab</span>
-          <span class="cmd-tag">Jump</span>
+        <div class="sheet-items-list" id="sheetItemsList">
+          <p class="empty-tray-msg" data-i18n="tray_empty_msg">No has añadido productos aún. Pulsa en "+ Añadir" en cualquier pancake o café.</p>
         </div>
-        <div class="cmd-item" data-goto="#standards">
-          <span>03 / The Anti-Slop Code Standards</span>
-          <span class="cmd-tag">Jump</span>
-        </div>
-        <div class="cmd-item" data-goto="#contact">
-          <span>04 / Contact &amp; Availability</span>
-          <span class="cmd-tag">Jump</span>
-        </div>
-
-        <div class="cmd-group">Actions</div>
-        <div class="cmd-item" data-action="spawn-toast">
-          <span>Spawn Sonner Toast Alert</span>
-          <span class="cmd-tag">Action</span>
-        </div>
-        <div class="cmd-item" data-action="toggle-theme">
-          <span>Toggle Color Theme</span>
-          <span class="cmd-tag">Theme</span>
-        </div>
-        <div class="cmd-item" data-action="toggle-audio">
-          <span>Toggle Audio Haptic Feedback</span>
-          <span class="cmd-tag">Audio</span>
+        <div class="sheet-footer">
+          <div class="sheet-total-row">
+            <span data-i18n="total_label">Total Estimado</span>
+            <span class="sheet-total-val" id="sheetTotalVal">0,00 €</span>
+          </div>
+          <button class="btn-confirm-order" id="btnConfirmOrder">
+            <span data-i18n="confirm_btn">Pedir al Camarero / Copiar</span>
+          </button>
         </div>
       </div>
     </div>
+
+    <!-- 5. BARRA DE NAVEGACIÓN INFERIOR (TAB BAR TÁCTIL) -->
+    <nav class="bottom-tab-bar" aria-label="Navegación de la carta">
+      <button class="tab-item active" data-nav="viewMenu">
+        <span class="tab-icon">🥞</span>
+        <span class="tab-title" data-i18n="nav_menu">Carta</span>
+      </button>
+
+      <button class="tab-item" data-nav="viewAbout">
+        <span class="tab-icon">✨</span>
+        <span class="tab-title" data-i18n="nav_about">Nosotros</span>
+      </button>
+
+      <button class="tab-item" data-nav="viewReviews">
+        <span class="tab-icon">★</span>
+        <span class="tab-title" data-i18n="nav_reviews">Opiniones</span>
+      </button>
+
+      <a href="https://www.google.com/maps/search/?api=1&query=Moriso%C3%B1ando+Granada+Calle+Moral+de+la+Magdalena+3" target="_blank" rel="noopener noreferrer" class="tab-item">
+        <span class="tab-icon">📍</span>
+        <span class="tab-title" data-i18n="nav_map">Cómo Llegar</span>
+      </a>
+    </nav>
+
   </div>
+
+  <!-- TOAST FEEDBACK NOTIFICATIONS -->
+  <div class="toast-sink" id="toastSink"></div>
 
   <script src="script.js"></script>
 </body>
